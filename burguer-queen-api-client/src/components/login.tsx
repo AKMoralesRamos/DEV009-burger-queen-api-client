@@ -1,12 +1,12 @@
 import { useState } from 'react';
-//import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
 
 function FormLogin() {
-//  const history = useHistory();
+ const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -29,10 +29,11 @@ function FormLogin() {
         const concat = `Bearer ${token}`;
         console.log(concat);
         console.log('Inicio de sesión exitoso');
-        window.history.pushState({}, '', `${window.location.origin}/home`);
-        window.dispatchEvent(new PopStateEvent('popstate'));
+       /*  window.history.pushState({}, '', `${window.location.origin}/home`);
+        window.dispatchEvent(new PopStateEvent('popstate')); */
+        navigate("/home");
       } else {
-        // La solicitud no fue exitosa, puedes manejar los errores aquí.
+        
         console.error('Error al iniciar sesión');
       }
     } catch (error) {
