@@ -62,7 +62,7 @@ function FormLogin() {
           onChange={(e) => setPassword(e.target.value)}
         />
       </FloatingLabel>
-      <Button variant="success" onClick={handleLogin}>
+      <Button variant="dark" onClick={handleLogin}>
         Iniciar sesión
       </Button>{' '}
     </>
