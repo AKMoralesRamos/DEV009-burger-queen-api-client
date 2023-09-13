@@ -1,7 +1,7 @@
 import React from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
-
+import logo from '../images/burger-queen-logo.png'
 
 function Header() {
   return (
@@ -11,7 +11,7 @@ function Header() {
           <Navbar.Brand href="#home">
             <img
               alt=""
-              src="C:\\Users\\ceci_\\OneDrive\\Escritorio\\BQAC\\DEV009-burger-queen-api-client\\burguer-queen-api-client\\images\\image-removebg-preview (24).png"
+              src={logo} 
               width="60"
               height="30"
               className="d-inline-block align-top"
