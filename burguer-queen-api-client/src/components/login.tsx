@@ -45,6 +45,8 @@ function FormLogin() {
   };
 
   return (
+    <>
+   <Header />
     <div
     style={{
       backgroundImage: `url(${hamburger})`, 
@@ -53,22 +55,24 @@ function FormLogin() {
       backgroundPosition: 'center', 
       minHeight: '100vh', 
       display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'center',
+      flexDirection: 'row',
+      justifyContent: 'flex-start',
       alignItems: 'center',
     }}
   >
-    <Header />
     <div
       style={{
         backgroundColor: '#EC8133', 
         padding: '50px',
         borderRadius: '5px',
+        boxShadow: '9px 10px 13px -1px rgba(0,0,0,0.4)',
+        marginLeft: '15%'
       }}
     >
+      <h2 className="mb-4" style={{ fontSize: '24px', fontWeight: 'bold' }}>¡Bienvenid@!</h2>
       <FloatingLabel
         controlId="floatingInput"
-        label="Email address"
+        label="Email"
         className="mb-4"
       >
         <Form.Control
@@ -78,7 +82,7 @@ function FormLogin() {
           onChange={(e) => setEmail(e.target.value)}
         />
       </FloatingLabel>
-      <FloatingLabel controlId="floatingPassword" label="Password"
+      <FloatingLabel controlId="floatingPassword" label="Contraseña"
         className="mb-4">
         <Form.Control
           type="password"
@@ -93,6 +97,7 @@ function FormLogin() {
       </Button>
     </div>
   </div>
+  </>
   );
 }
 
