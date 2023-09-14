@@ -7,7 +7,6 @@ import Header from './header';
 import hamburger from '../images/destacda-hamburguesa.jpg'
 
 
-
 function FormLogin() {
  const navigate = useNavigate();
   const [email, setEmail] = useState('');
