@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import Header from '../components/header'
+
 
 
 function FormLogin() {
@@ -27,7 +29,7 @@ function FormLogin() {
         const data = await response.json();
         const token = data.accessToken;
         const concat = `Bearer ${token}`;
-        console.log(concat);
+        localStorage.setItem('authToken', concat);
         console.log('Inicio de sesión exitoso');
        /*  window.history.pushState({}, '', `${window.location.origin}/home`);
         window.dispatchEvent(new PopStateEvent('popstate')); */
@@ -43,6 +45,9 @@ function FormLogin() {
 
   return (
     <>
+    <div>
+   <div><Header /> </div> 
+   <div>
       <FloatingLabel
         controlId="floatingInput"
         label="Email address"
@@ -66,6 +71,8 @@ function FormLogin() {
       <Button variant="success" onClick={handleLogin}>
         Iniciar sesión
       </Button>{' '}
+      </div>
+      </div>
     </>
   );
 }

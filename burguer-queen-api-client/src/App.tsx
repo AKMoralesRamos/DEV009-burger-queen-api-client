@@ -5,14 +5,18 @@ import {
 import './App.css';
 import ROUTES  from '../routes/routes'
 
+
 const App = () => {
   const router = createBrowserRouter (ROUTES) ;
 
   return (
-    <RouterProvider 
-    router={router}
-    />
-  )
+    <div>
+  
+     <RouterProvider 
+     router={router}
+     />
+    </div>
+   )
 }
 
 export default App ;
