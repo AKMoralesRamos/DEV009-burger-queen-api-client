@@ -1,36 +1,86 @@
-import { useState } from 'react' 
-//import reactLogo from '../assets/react.svg'
-import burger from '../images/burger.png'
 import '../App.css'
 import Header from './header';
+import Button from 'react-bootstrap/Button';
 
 
 function Home() {
-    const [count, setCount] = useState(0);
   
     return (
       <>
+       <div style={{ backgroundColor: '#FFAA6C', minHeight: '100vh' }}>
       <Header/>
-        <div>
-          <a href="https://img.freepik.com/fotos-premium/caricatura-hamburguesa-papas-fritas_891977-695.jpg?w=2000" target="_blank" rel="noopener noreferrer">
-            <img src={burger} className="logo" alt="Vite logo" />
-          </a>
-          {/* <a href="https://react.dev" target="_blank" rel="noopener noreferrer">
-            <img src={reactLogo} className="logo react" alt="React logo" />
-          </a> */}
-        </div>
-        <h1>Burger Queen</h1>
-        <div className="card">
-          <button onClick={() => setCount((count) => count + 1)}>
-            count is {count}
-          </button>
-          <p>
-            Edit <code>src/App.tsx</code> and save to test HMR
-          </p>
-        </div>
-        <p className="read-the-docs">
-          Click on the Vite and React logos to learn more
-        </p>
+
+      
+    <div className="d-grid gap-2">
+      <Button
+        size="lg"
+        style={{
+          width: '554px',
+          height: '80px',
+          borderRadius: '10px',
+          background: '#EB7433',
+          borderColor:'#EB7433',
+          transition: 'background 0.3s, color 0.3s', // Agrega una transición suave
+        }}
+        onMouseEnter={(e) => {
+          e.target.style.background = '#EF5F10'; // Cambia el color de fondo al hacer hover
+          e.target.style.color = 'white'; // Cambia el color del texto al hacer hover
+        }}
+        onMouseLeave={(e) => {
+          e.target.style.background = '#EB7433'; // Restaura el color de fondo al salir del hover
+          e.target.style.color = 'initial'; // Restaura el color del texto al salir del hover
+      
+        }}
+      >
+        Mesero
+      </Button>
+      <Button
+        size="lg"
+        style={{
+          width: '554px',
+          height: '80px',
+          borderRadius: '10px',
+          background: '#EB7433',
+          borderColor:'#EB7433',
+          transition: 'background 0.3s, color 0.3s',
+        }}
+        onMouseEnter={(e) => {
+          e.target.style.background = '#EF5F10'; // Cambia el color de fondo al hacer hover
+          e.target.style.color = 'white'; // Cambia el color del texto al hacer hover
+        }}
+        onMouseLeave={(e) => {
+          e.target.style.background = '#EB7433'; // Restaura el color de fondo al salir del hover
+          e.target.style.color = 'initial'; // Restaura el color del texto al salir del hover
+      
+        }}
+      >
+        Jefe de cocina
+      </Button>
+      <Button
+        size="lg"
+        style={{
+          width: '554px',
+          height: '80px',
+          borderRadius: '10px',
+          background: '#EB7433',
+          borderColor:'#EB7433',
+          transition: 'background 0.3s, color 0.3s',
+        }}
+        onMouseEnter={(e) => {
+          e.target.style.background = '#EF5F10'; // Cambia el color de fondo al hacer hover
+          e.target.style.color = 'white'; // Cambia el color del texto al hacer hover
+        }}
+        onMouseLeave={(e) => {
+          e.target.style.background = '#EB7433'; // Restaura el color de fondo al salir del hover
+          e.target.style.color = 'initial'; // Restaura el color del texto al salir del hover
+      
+        }}
+      >
+        Admin
+      </Button>
+      </div>
+  
+  </div>
       </>
     );
   }

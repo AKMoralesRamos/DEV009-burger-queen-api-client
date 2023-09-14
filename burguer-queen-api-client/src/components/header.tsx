@@ -24,7 +24,17 @@ function Header() {
               className="d-inline-block align-top"
             />{' '}
           </Navbar.Brand>
-          <button className="logout-button"  onClick={handleLogout}>
+          <button className="logout-button custom-button-style"
+          onClick={handleLogout}
+          style={{
+            backgroundColor: '#EC8133', 
+            color: 'white', 
+            fontSize: '14px', 
+            width: '100px', 
+            height: '40px', 
+            borderRadius: '5px', 
+          }}
+          >
           Logout
         </button> 
         </Container>
