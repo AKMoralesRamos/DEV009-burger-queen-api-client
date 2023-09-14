@@ -1,7 +1,7 @@
 function orders() {
     return (
       <>
-        <h1>Hola, aqui vas a visualizar órdenes de pedido</h1>
+        <h1>Hola, aqui vas a visualizar órdenes de pedido, muchas gracias</h1>
       </>
     );
   }
