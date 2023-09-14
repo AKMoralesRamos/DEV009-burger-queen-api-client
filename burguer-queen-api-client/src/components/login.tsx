@@ -3,6 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import Header from './header';
+import hamburger from '../images/destacda-hamburguesa.jpg'
+
 
 
 function FormLogin() {
@@ -27,7 +30,7 @@ function FormLogin() {
         const data = await response.json();
         const token = data.accessToken;
         const concat = `Bearer ${token}`;
-        console.log(concat);
+        localStorage.setItem('authToken', concat);
         console.log('Inicio de sesión exitoso');
        /*  window.history.pushState({}, '', `${window.location.origin}/home`);
         window.dispatchEvent(new PopStateEvent('popstate')); */
@@ -43,10 +46,34 @@ function FormLogin() {
 
   return (
     <>
+   <Header />
+    <div
+    style={{
+      backgroundImage: `url(${hamburger})`, 
+      backgroundSize: 'cover', 
+      backgroundRepeat: 'no-repeat', 
+      backgroundPosition: 'center', 
+      minHeight: '100vh', 
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'flex-start',
+      alignItems: 'center',
+    }}
+  >
+    <div
+      style={{
+        backgroundColor: '#EC8133', 
+        padding: '50px',
+        borderRadius: '5px',
+        boxShadow: '9px 10px 13px -1px rgba(0,0,0,0.4)',
+        marginLeft: '15%'
+      }}
+    >
+      <h2 className="mb-4" style={{ fontSize: '24px', fontWeight: 'bold' }}>¡Bienvenid@!</h2>
       <FloatingLabel
         controlId="floatingInput"
-        label="Email address"
-        className="mb-3"
+        label="Email"
+        className="mb-4"
       >
         <Form.Control
           type="email"
@@ -55,7 +82,8 @@ function FormLogin() {
           onChange={(e) => setEmail(e.target.value)}
         />
       </FloatingLabel>
-      <FloatingLabel controlId="floatingPassword" label="Password">
+      <FloatingLabel controlId="floatingPassword" label="Contraseña"
+        className="mb-4">
         <Form.Control
           type="password"
           placeholder="Password"
@@ -63,10 +91,13 @@ function FormLogin() {
           onChange={(e) => setPassword(e.target.value)}
         />
       </FloatingLabel>
-      <Button variant="success" onClick={handleLogin}>
+      <Button variant="dark" onClick={handleLogin} style={{  width: '90%',
+    height: '10%',borderRadius: '50px' }}>
         Iniciar sesión
-      </Button>{' '}
-    </>
+      </Button>
+    </div>
+  </div>
+  </>
   );
 }
 
