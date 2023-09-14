@@ -2,6 +2,7 @@ import { useState } from 'react'
 //import reactLogo from '../assets/react.svg'
 import burger from '../images/burger.png'
 import '../App.css'
+import Header from './header';
 import Header from './header'
 
 function Home() {
@@ -9,6 +10,7 @@ function Home() {
   
     return (
       <>
+      <Header/>
       <Header /> 
         <div>
           <a href="https://img.freepik.com/fotos-premium/caricatura-hamburguesa-papas-fritas_891977-695.jpg?w=2000" target="_blank" rel="noopener noreferrer">

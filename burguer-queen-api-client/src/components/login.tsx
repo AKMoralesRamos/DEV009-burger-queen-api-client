@@ -3,7 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import Header from '../components/header'
+import Header from './header';
+import hamburger from '../images/destacda-hamburguesa.jpg'
 
 
 
@@ -44,14 +45,31 @@ function FormLogin() {
   };
 
   return (
-    <>
-    <div>
-   <div><Header /> </div> 
-   <div>
+    <div
+    style={{
+      backgroundImage: `url(${hamburger})`, 
+      backgroundSize: 'cover', 
+      backgroundRepeat: 'no-repeat', 
+      backgroundPosition: 'center', 
+      minHeight: '100vh', 
+      display: 'flex',
+      flexDirection: 'column',
+      justifyContent: 'center',
+      alignItems: 'center',
+    }}
+  >
+    <Header />
+    <div
+      style={{
+        backgroundColor: '#EC8133', 
+        padding: '50px',
+        borderRadius: '5px',
+      }}
+    >
       <FloatingLabel
         controlId="floatingInput"
         label="Email address"
-        className="mb-3"
+        className="mb-4"
       >
         <Form.Control
           type="email"
@@ -60,7 +78,8 @@ function FormLogin() {
           onChange={(e) => setEmail(e.target.value)}
         />
       </FloatingLabel>
-      <FloatingLabel controlId="floatingPassword" label="Password">
+      <FloatingLabel controlId="floatingPassword" label="Password"
+        className="mb-4">
         <Form.Control
           type="password"
           placeholder="Password"
@@ -68,12 +87,12 @@ function FormLogin() {
           onChange={(e) => setPassword(e.target.value)}
         />
       </FloatingLabel>
-      <Button variant="success" onClick={handleLogin}>
+      <Button variant="dark" onClick={handleLogin} style={{  width: '90%',
+    height: '10%',borderRadius: '50px' }}>
         Iniciar sesión
-      </Button>{' '}
-      </div>
-      </div>
-    </>
+      </Button>
+    </div>
+  </div>
   );
 }
 
