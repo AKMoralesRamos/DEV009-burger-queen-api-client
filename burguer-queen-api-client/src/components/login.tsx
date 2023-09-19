@@ -4,7 +4,7 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Header from './header';
-import hamburger from '../images/destacda-hamburguesa.jpg'
+import hamburger from '../images/destacda-hamburguesa-recortada.jpg'
 
 
 function FormLogin() {
@@ -29,6 +29,7 @@ function FormLogin() {
         const data = await response.json();
         const token = data.accessToken;
         const concat = `Bearer ${token}`;
+        console.log(concat);
         localStorage.setItem('authToken', concat);
         console.log('Inicio de sesión exitoso');
        /*  window.history.pushState({}, '', `${window.location.origin}/home`);
@@ -68,7 +69,7 @@ function FormLogin() {
         marginLeft: '15%'
       }}
     >
-      <h2 className="mb-4" style={{ fontSize: '24px', fontWeight: 'bold' }}>¡Bienvenid@!</h2>
+      <h2 className="mb-5" style={{ fontSize: '24px', fontWeight: 'bold' }}>¡Bienvenid@!</h2>
       <FloatingLabel
         controlId="floatingInput"
         label="Email"
@@ -82,7 +83,7 @@ function FormLogin() {
         />
       </FloatingLabel>
       <FloatingLabel controlId="floatingPassword" label="Contraseña"
-        className="mb-4">
+        className="mb-5">
         <Form.Control
           type="password"
           placeholder="Password"

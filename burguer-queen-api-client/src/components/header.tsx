@@ -13,7 +13,7 @@ function Header() {
     }; 
     const back = useNavigate();
     const handleBack = () => {
-      localStorage.clear();
+      //localStorage.clear();
       back("/home");
     }; 
   return (

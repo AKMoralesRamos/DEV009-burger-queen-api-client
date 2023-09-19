@@ -15,12 +15,12 @@ function Home() {
   };
   const navigate = useNavigate();
   const handleOrders = () => {
-    localStorage.clear();
+   // localStorage.clear();
     navigate("/orders");
   }; 
   const navigateAdmin = useNavigate();
   const handleAdmin = () => {
-    localStorage.clear();
+    //localStorage.clear();
     navigateAdmin("/admin");
   }; 
   
@@ -35,6 +35,7 @@ function Home() {
           width: '554px',
           height: '80px',
           borderRadius: '10px',
+          color: 'black',
           background: '#EB7433',
           borderColor:'#EB7433',
           transition: 'background 0.3s, color 0.3s', 
@@ -58,6 +59,7 @@ function Home() {
           width: '554px',
           height: '80px',
           borderRadius: '10px',
+          color: 'black',
           background: '#EB7433',
           borderColor:'#EB7433',
           transition: 'background 0.3s, color 0.3s',
@@ -81,6 +83,7 @@ function Home() {
           width: '554px',
           height: '80px',
           borderRadius: '10px',
+          color: 'black',
           background: '#EB7433',
           borderColor:'#EB7433',
           transition: 'background 0.3s, color 0.3s',

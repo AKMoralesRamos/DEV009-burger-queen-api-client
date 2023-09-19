@@ -1,6 +1,6 @@
 import Header from './header';
-import Button from 'react-bootstrap/Button';
-import { useNavigate } from 'react-router-dom';
+//import Button from 'react-bootstrap/Button';
+//import { useNavigate } from 'react-router-dom';
 
 function admin() {
     return (
