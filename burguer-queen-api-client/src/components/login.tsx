@@ -5,18 +5,22 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import hamburger from '../images/destacda-hamburguesa-recortada.jpg'
 import HeaderLogin from './headerLogin';
-
-
 function FormLogin() {
  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+<<<<<<< HEAD
 
   const clearErrorMessage = () => {
     setErrorMessage('');
   };
 
+=======
+  const clearErrorMessage = () => {
+    setErrorMessage('');
+  };
+>>>>>>> e633a8d0a19d92f68c5a35198015472a1299dc99
   const handleLogin = async () => {
     try {
       const response = await fetch('http://localhost:8080/login', {
@@ -29,7 +33,6 @@ function FormLogin() {
           password,
         }),
       });
-      
       if (response.ok) {
         const data = await response.json();
         const token = data.accessToken;
@@ -47,17 +50,16 @@ function FormLogin() {
       console.error('Error al iniciar sesión:', error);
     }
   };
-
   return (
     <>
    <HeaderLogin />
     <div
     style={{
-      backgroundImage: `url(${hamburger})`, 
-      backgroundSize: 'cover', 
-      backgroundRepeat: 'no-repeat', 
-      backgroundPosition: 'center', 
-      minHeight: '100vh', 
+      backgroundImage: `url(${hamburger})`,
+      backgroundSize: 'cover',
+      backgroundRepeat: 'no-repeat',
+      backgroundPosition: 'center',
+      minHeight: '100vh',
       display: 'flex',
       flexDirection: 'row',
       justifyContent: 'flex-start',
@@ -66,7 +68,7 @@ function FormLogin() {
   >
     <div
       style={{
-        backgroundColor: '#EC8133', 
+        backgroundColor: '#EC8133',
         padding: '50px',
         borderRadius: '5px',
         boxShadow: '9px 10px 13px -1px rgba(0,0,0,0.4)',
@@ -107,5 +109,4 @@ function FormLogin() {
   </>
   );
 }
-
 export default FormLogin;
