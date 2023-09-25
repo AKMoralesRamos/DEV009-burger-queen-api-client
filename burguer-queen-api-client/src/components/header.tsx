@@ -52,7 +52,7 @@ function Header() {
         
           }}
           >
-          Volver
+          Home
         </button> 
         <button className="logout-button custom-button-style"
           onClick={handleLogout}
