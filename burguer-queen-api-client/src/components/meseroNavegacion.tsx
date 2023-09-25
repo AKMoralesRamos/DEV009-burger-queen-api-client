@@ -1,6 +1,5 @@
 import Button from 'react-bootstrap/Button';
-import NewOrder from './nuevaOrden';
-//import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function MeseroNav() {
     const containerStyle = {
@@ -11,7 +10,12 @@ function MeseroNav() {
       alignItems: 'flex-start', 
       justifyContent: 'center',
     };
-// Aquí podremos mostrar componentes para Nueva orden o Gestión de pedidos con eventos onclick
+    // Aquí podremos mostrar componentes para Nueva orden o Gestión de pedidos con eventos onclick
+    const navigate = useNavigate();
+    const handleGestionMesero = () => {
+    navigate("/gestionMesero");
+  }; 
+
     return (
         <div style={containerStyle}>   
     <div className="d-grid gap-4 "></div>
@@ -65,7 +69,7 @@ function MeseroNav() {
           e.target.style.color = 'initial'; // Restaura el color del texto al salir del hover
       
         }}
-        
+        onClick={handleGestionMesero}
       >
       Gestión de Pedidos
       </Button>

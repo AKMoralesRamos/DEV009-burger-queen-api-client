@@ -5,6 +5,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Header from './header';
 import hamburger from '../images/destacda-hamburguesa-recortada.jpg'
+import HeaderLogin from './headerLogin';
 
 
 function FormLogin() {
@@ -46,7 +47,7 @@ function FormLogin() {
 
   return (
     <>
-   <Header />
+   <HeaderLogin />
     <div
     style={{
       backgroundImage: `url(${hamburger})`, 
