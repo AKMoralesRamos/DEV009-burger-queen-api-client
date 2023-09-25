@@ -40,10 +40,6 @@ function MeseroNav() {
           e.target.style.color = 'initial'; 
       
         }}
-        onClick={() => {
-          NewOrder
-          console.log("Se hizo clic en el botón Nueva Orden");
-        }}
       
       >
       Nueva Orden
