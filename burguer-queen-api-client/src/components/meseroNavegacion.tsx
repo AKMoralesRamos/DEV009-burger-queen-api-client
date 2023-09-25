@@ -1,4 +1,5 @@
 import Button from 'react-bootstrap/Button';
+import NewOrder from './nuevaOrden';
 //import { useNavigate } from 'react-router-dom';
 
 function MeseroNav() {
@@ -34,6 +35,10 @@ function MeseroNav() {
           e.target.style.background = '#EB7433'; 
           e.target.style.color = 'initial'; 
       
+        }}
+        onClick={() => {
+          NewOrder
+          console.log("Se hizo clic en el botón Nueva Orden");
         }}
       
       >
