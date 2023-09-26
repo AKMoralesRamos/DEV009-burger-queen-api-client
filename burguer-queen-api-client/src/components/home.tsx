@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 function Home() {
   const containerStyle = {
     backgroundColor: '#FFAA6C',
+    with: '100%',
     minHeight: '100vh',
     display: 'flex',
     flexDirection: 'column',

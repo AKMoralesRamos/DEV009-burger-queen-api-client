@@ -10,17 +10,11 @@ function FormLogin() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
-<<<<<<< HEAD
 
   const clearErrorMessage = () => {
     setErrorMessage('');
   };
 
-=======
-  const clearErrorMessage = () => {
-    setErrorMessage('');
-  };
->>>>>>> e633a8d0a19d92f68c5a35198015472a1299dc99
   const handleLogin = async () => {
     try {
       const response = await fetch('http://localhost:8080/login', {
