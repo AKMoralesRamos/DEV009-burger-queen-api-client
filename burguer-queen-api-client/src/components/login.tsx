@@ -5,8 +5,6 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import hamburger from '../images/destacda-hamburguesa-recortada.jpg'
 import HeaderLogin from './headerLogin';
-
-
 function FormLogin() {
  const navigate = useNavigate();
   const [email, setEmail] = useState('');
@@ -29,7 +27,6 @@ function FormLogin() {
           password,
         }),
       });
-      
       if (response.ok) {
         const data = await response.json();
         const token = data.accessToken;
@@ -47,17 +44,16 @@ function FormLogin() {
       console.error('Error al iniciar sesión:', error);
     }
   };
-
   return (
     <>
    <HeaderLogin />
     <div
     style={{
-      backgroundImage: `url(${hamburger})`, 
-      backgroundSize: 'cover', 
-      backgroundRepeat: 'no-repeat', 
-      backgroundPosition: 'center', 
-      minHeight: '100vh', 
+      backgroundImage: `url(${hamburger})`,
+      backgroundSize: 'cover',
+      backgroundRepeat: 'no-repeat',
+      backgroundPosition: 'center',
+      minHeight: '100vh',
       display: 'flex',
       flexDirection: 'row',
       justifyContent: 'flex-start',
@@ -66,7 +62,7 @@ function FormLogin() {
   >
     <div
       style={{
-        backgroundColor: '#EC8133', 
+        backgroundColor: '#EC8133',
         padding: '50px',
         borderRadius: '5px',
         boxShadow: '9px 10px 13px -1px rgba(0,0,0,0.4)',
@@ -107,5 +103,4 @@ function FormLogin() {
   </>
   );
 }
-
 export default FormLogin;

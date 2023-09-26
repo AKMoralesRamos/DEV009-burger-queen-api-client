@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Header from './header';
 import MeseroNav from './meseroNavegacion';
-
 function Orders() {
   const containerStyle = {
     backgroundColor: '#FFAA6C',
@@ -13,10 +12,8 @@ function Orders() {
     justifyContent: 'center',
     padding: '20px',
   };
-
   const [orders, setOrders] = useState([]); // Estado para almacenar las órdenes
   const token = localStorage.getItem('authToken');
-
   useEffect(() => {
     const fetchOrders = async () => {
       try {
@@ -27,7 +24,6 @@ function Orders() {
             Authorization: token,
           },
         });
-
         if (response.ok) {
           const data = await response.json();
           console.log(data);
@@ -39,10 +35,10 @@ function Orders() {
         console.error('Error en la solicitud de órdenes:', error);
       }
     };
-
     fetchOrders();
   }, [token]);
 
+  
   return (
     <>
       <Header />
@@ -50,7 +46,6 @@ function Orders() {
       <div style={containerStyle}>
         <div className="d-grid gap-4 "></div>
         <div style={{ width: '40%' }}>
-          
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', }}>
           {orders.map((order) => (
@@ -78,6 +73,5 @@ function Orders() {
     </>
   );
 }
-
 export default Orders;
 
