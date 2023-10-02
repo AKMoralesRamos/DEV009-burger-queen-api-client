@@ -24,6 +24,10 @@ function Home() {
     //localStorage.clear();
     navigateAdmin("/admin");
   }; 
+  const navigateJefedeCocina = useNavigate();
+  const handleJefeDeCocina = () =>{
+    navigateJefedeCocina("/jefeDeCocina");
+  }
   
     return (
       <>
@@ -74,7 +78,7 @@ function Home() {
           e.target.style.color = 'initial'; // Restaura el color del texto al salir del hover
       
         }}
-        
+        onClick={handleJefeDeCocina}
       >
       Jefe de cocina
       </Button>
