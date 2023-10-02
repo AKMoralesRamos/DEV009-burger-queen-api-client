@@ -52,8 +52,6 @@ function Orders() {
     };
     fetchOrders();
   }, [token]);
-
-  
   return (
     <>
       <Header />
