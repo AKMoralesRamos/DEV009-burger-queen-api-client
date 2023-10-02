@@ -37,8 +37,6 @@ function Orders() {
     };
     fetchOrders();
   }, [token]);
-
-  
   return (
     <>
       <Header />
@@ -63,7 +61,7 @@ function Orders() {
                     <p>Cantidad: {product.qty}</p>
                     <p>Precio: ${product.product.price}</p>
                     <p>Tipo: {product.product.type}</p>
-                  </li>
+                  </li> 
                 ))}
               </ul>
             </div>
