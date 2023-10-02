@@ -12,7 +12,7 @@ function Admin() {
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'flex-start',
-    justifyContent: 'left',
+    justifyContent: 'center',
     padding: '20px',
   };
 
@@ -20,21 +20,21 @@ function Admin() {
 
   const [activeButton, setActiveButton] = useState(null);
 
-  const handleGestionMesero = () => {
-    navigate("/gestionMesero");
-    setActiveButton("gestionMesero");
+  const handleGestionProductos = () => {
+    navigate("/gestionProductos");
+    setActiveButton("gestionProductos");
   };
 
-  const handleNewOrder = () => {
-    navigate("/orders");
-    setActiveButton("newOrder");
+  const handleGestionTrabajadores = () => {
+    navigate("/gestionTrabajadores");
+    setActiveButton("gestionTrabajadores");
   }; 
   return (
     <>
       <Header />
       <div style={containerStyle}>
         <div className="d-grid gap-4 "></div>
-      </div>
+     
       <Button
         size="lg"
         style={{
@@ -43,21 +43,21 @@ function Admin() {
           margin: '10px',
           borderRadius: '10px',
           color: 'black',
-          background: activeButton === "newOrder" ? '#EF5F10' : '#EB7433',
+          background: activeButton === "gestionProductos" ? '#EF5F10' : '#EB7433',
           borderColor: '#EB7433',
           transition: 'background 0.3s, color 0.3s',
         }}
         onMouseEnter={(e) => {
-          e.target.style.background = activeButton === "newOrder" ? '#EF5F10' : '#EB7433';
+          e.target.style.background = activeButton === "gestionProductos" ? '#EF5F10' : '#EB7433';
           e.target.style.color = 'white';
         }}
         onMouseLeave={(e) => {
-          if (activeButton !== "newOrder") {
+          if (activeButton !== "gestionProductos") {
             e.target.style.background = '#EB7433';
             e.target.style.color = 'initial';
           }
         }}
-        onClick={handleNewOrder}
+        onClick={handleGestionProductos}
       >
       Gestión de productos
       </Button>
@@ -69,24 +69,25 @@ function Admin() {
           margin: '10px',
           borderRadius: '10px',
           color: 'black',
-          background: activeButton === "gestionMesero" ? '#EF5F10' : '#EB7433',
+          background: activeButton === "gestionTrabajadores" ? '#EF5F10' : '#EB7433',
           borderColor: '#EB7433',
           transition: 'background 0.3s, color 0.3s',
         }}
         onMouseEnter={(e) => {
-          e.target.style.background = activeButton === "gestionMesero" ? '#EF5F10' : '#EB7433';
+          e.target.style.background = activeButton === "gestionTrabajadores" ? '#EF5F10' : '#EB7433';
           e.target.style.color = 'white';
         }}
         onMouseLeave={(e) => {
-          if (activeButton !== "gestionMesero") {
+          if (activeButton !== "gestionTrabajadores") {
             e.target.style.background = '#EB7433';
             e.target.style.color = 'initial';
           }
         }}
-        onClick={handleGestionMesero}
+        onClick={handleGestionTrabajadores}
       >
         Gestión de trabajadores
       </Button>
+      </div>
     </>
   );
 }

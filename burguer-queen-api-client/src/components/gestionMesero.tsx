@@ -20,11 +20,11 @@ function Orders() {
   const getStatusButtonStyle = (status) => {
     switch (status) {
       case 'pending':
-        return { text: 'En proceso', color: 'red' };
+        return { text: 'En proceso', color: '#E7372C' };
       case 'delivered':
-        return { text: 'Entregado', color: 'green' };
+        return { text: 'Entregado', color: '#93C32F' };
       case 'ready':
-        return { text: 'Listo', color: 'yellow' };
+        return { text: 'Listo', color: '#F8CA23' };
     }
   };
   const [orders, setOrders] = useState([]); // Estado para almacenar las órdenes
@@ -65,7 +65,7 @@ function Orders() {
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center',width:'50%',height:'20%', }}>
           
           {orders.map((order) => (
-            <div key={order.id} style={{  backgroundColor: '#EC8133',width: '150%',height: '30%',margin: '5px', padding: '10px', border: '1px solid #ccc', borderRadius: '5px', boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start', alignItems: 'flex-start' }}>
+            <div key={order.id} style={{  backgroundColor: '#EC8133',width: '150%',height: '30%',margin: '5px', padding: '10px', border: '1px solid #ccc', borderRadius: '5px', boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
               <p>ID del Pedido: {order.id}</p>
               <h5>Cliente: {order.client}</h5>
               <button
@@ -96,10 +96,10 @@ function Orders() {
                    <tbody>
                     {order.products.map((product) => (
                        <tr key={product.product.id}>
-                         <td>{product.product.name}</td>
-                         <td>{product.qty}</td>
-                         <td>${product.product.price}</td>
-                         <td>{product.product.type}</td>
+                         <td  style={{ padding: '0 20px' }}>{product.product.name}</td>
+                         <td  style={{ padding: '0 20px' }}>{product.qty}</td>
+                         <td  style={{ padding: '0 20px' }}>${product.product.price}</td>
+                         <td  style={{ padding: '0 20px' }}>{product.product.type}</td>
                       </tr>
                     ))}
                   </tbody>
