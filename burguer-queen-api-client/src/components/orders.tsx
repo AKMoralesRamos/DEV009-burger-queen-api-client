@@ -23,12 +23,12 @@ function Orders() {
       setCart((previousState) => [
         ...previousState.map((element) =>
           element.id === product.id
-            ? { ...element, quantity: element.quantity + 1 }
+            ? { ...element, qty: element.qty + 1 }
             : element
         ),
       ]);
     } else {
-      setCart([...cart, {...product, quantity: 1}]);
+      setCart([...cart, {...product, qty: 1}]);
     }
   };
 
@@ -38,7 +38,7 @@ function Orders() {
       setCart((previousState) => [
         ...previousState.map((element) =>
           element.id === product.id
-            ? { ...element, quantity: Math.max(element.quantity - 1, 1) }
+            ? { ...element, qty: Math.max(element.qty - 1, 1) }
             : element
         ),
       ]);
@@ -55,7 +55,36 @@ function Orders() {
     setCart(updatedCart);
     console.log(updatedCart);
   };
-
+  const token = localStorage.getItem('authToken');
+  const handleCreateOrder = async () => {
+    try {
+      const response = await fetch('http://localhost:8080/orders', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: token,
+        },
+        body: JSON.stringify({
+          userId: 1,
+          client: {clientName},
+          products: cart,
+          status: "pending",
+          dateEntry: "05"
+        }),
+      });
+      if (response.ok) {
+        await response.json();
+       
+        console.log('orden creada');
+      
+       
+      } else if(!response.ok){
+        setErrorMessage('Error al mostrar orden');
+      }
+    } catch (error) {
+      console.error('Error al enviar orden:', error);
+    }
+  };
   return (
     <>
       <Header />
@@ -66,7 +95,7 @@ function Orders() {
           <MenuOrders onAddToCart={handleAddToCart} onRemoveToCart={handleRemoveToCart} onAddName={handleClientName} />
         </div>
         <div style={{ width: "50%" }}>
-          <OrderCart cart={cart} clientName={clientName} onNewCart={handleDeleteProduct}/>
+          <OrderCart cart={cart} clientName={clientName} onNewCart={handleDeleteProduct} sendOrder={handleCreateOrder}/>
         </div>
       </div>
     </>

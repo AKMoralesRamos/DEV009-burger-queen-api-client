@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import deleteIconSvg from '../assets/delete_FILL0_wght400_GRAD0_opsz24.svg';
 
-function OrderCart({ cart, clientName, onNewCart, /* onSendOrder */ }) {
+function OrderCart({ cart, clientName, onNewCart, sendOrder }) {
    const [totalOrder, setTotalOrder] = useState('');
   const [products, setProducts] = useState([]);
   const token = localStorage.getItem('authToken');
@@ -66,7 +66,7 @@ function OrderCart({ cart, clientName, onNewCart, /* onSendOrder */ }) {
     let totalOrder = 0;
     for (const product of cart) {
       /* const currentCount = productCounters[product.id] || 0; */
-      totalOrder += product.quantity * product.price;
+      totalOrder += product.qty * product.price;
     }
   setTotalOrder(totalOrder);
   },//[cart, productCounters]);
@@ -92,7 +92,7 @@ function OrderCart({ cart, clientName, onNewCart, /* onSendOrder */ }) {
                      <img src={product.image} alt={product.name} style={{ maxWidth: '10%' }} />
                      <h3 style={{ fontSize: '16px' }}>{product.name}</h3>
                      <p>${product.price}</p>
-                     <p>{product.quantity}</p>
+                     <p>{product.qty}</p>
                      <div onClick={() => handleDeleteProduct(product.id)} style={{ width: '40px', height:'40px', borderRadius:'50%', marginRight:'10px',background:'#EB7433', display:'flex', alignItems:'center', justifyContent:'center' }}>
                 <img src={deleteIconSvg} alt="delete" />
               </div>
@@ -100,7 +100,7 @@ function OrderCart({ cart, clientName, onNewCart, /* onSendOrder */ }) {
           ))}
         <div>Total: ${totalOrder}</div>
         
-          <button /* onClick= {() => handleSend(cart)} */ style={{ margin: '10px' }}>Enviar</button>
+          <button onClick= {() => sendOrder()} style={{ margin: '10px' }}>Enviar</button>
           <button>Cancelar</button>
         </div>
       </div>
