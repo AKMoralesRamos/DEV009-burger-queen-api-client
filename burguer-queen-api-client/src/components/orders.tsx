@@ -6,6 +6,7 @@ import OrderCart from "./orderCart";
 
 function Orders() {
   const [cart, setCart] = useState([]);
+  const [clientName, setClientName] = useState([]);
   const containerStyle = {
     backgroundColor: "#FFAA6C",
     minHeight: "100vh",
@@ -17,7 +18,6 @@ function Orders() {
   };
 
   const handleAddToCart = (product) => {
-    // estado debe ser seteado con un callback
     const alreadyInCart = cart.some((element) => element.id === product.id);
     if(alreadyInCart) {
       setCart((previousState) => [
@@ -32,6 +32,30 @@ function Orders() {
     }
   };
 
+  const handleRemoveToCart = (product) =>{
+    const alreadyInCart = cart.some((element) => element.id === product.id);
+    if(alreadyInCart) {
+      setCart((previousState) => [
+        ...previousState.map((element) =>
+          element.id === product.id
+            ? { ...element, quantity: Math.max(element.quantity - 1, 1) }
+            : element
+        ),
+      ]);
+    } 
+  };
+  
+
+  const handleClientName = (value) => {
+    const lettersOnly = value.replace(/[^A-Za-z]/g, ' ').toUpperCase();
+      setClientName(lettersOnly);
+  }
+  const handleDeleteProduct = (productId) => {
+    const updatedCart = cart.filter((item) => item.id !== productId);
+    setCart(updatedCart);
+    console.log(updatedCart);
+  };
+
   return (
     <>
       <Header />
@@ -39,10 +63,10 @@ function Orders() {
       <div style={containerStyle}>
         <div className="d-grid gap-4 "></div>
         <div style={{ width: "50%" }}>
-          <MenuOrders onAddToCart={handleAddToCart} />
+          <MenuOrders onAddToCart={handleAddToCart} onRemoveToCart={handleRemoveToCart} onAddName={handleClientName} />
         </div>
         <div style={{ width: "50%" }}>
-          <OrderCart cart={cart} />
+          <OrderCart cart={cart} clientName={clientName} onNewCart={handleDeleteProduct}/>
         </div>
       </div>
     </>

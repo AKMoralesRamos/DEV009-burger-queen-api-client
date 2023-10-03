@@ -1,11 +1,8 @@
 import { useState, useEffect } from 'react';
-//import { InputValueContext } from './menuOrders';
-//import { useState } from 'react';
-//import ProductCard from './productCard';
+import deleteIconSvg from '../assets/delete_FILL0_wght400_GRAD0_opsz24.svg';
 
-function OrderCart({ cart }) {
-   const [totalOrder, setTotalOrder] = useState(0);
-  const [productCounters, setProductCounters] = useState(0);
+function OrderCart({ cart, clientName, onNewCart, /* onSendOrder */ }) {
+   const [totalOrder, setTotalOrder] = useState('');
   const [products, setProducts] = useState([]);
   const token = localStorage.getItem('authToken');
 
@@ -20,7 +17,7 @@ function OrderCart({ cart }) {
           },
         });
         if (response.ok) {
-          const data = await response.json();
+          await response.json();
           setProducts(products);
           
           // Guarda los productos en el estado
@@ -74,26 +71,36 @@ function OrderCart({ cart }) {
   setTotalOrder(totalOrder);
   },//[cart, productCounters]);
   )
-console.log(cart, productCounters);
+
+  const handleDeleteProduct = (productId) => {
+    onNewCart(productId);
+  
+  }
+
+ /*  const handleSend = (cart) => {
+    onSendOrder(cart);
+  } */
+
   return (
     <>
       <div style={containerStyle}>
         <h4>Resumen de la orden</h4>
-        <p>Cliente: </p>
+        <p>Cliente: {clientName}</p>
         <div>
           {cart.map((product) => (
                      <div key={product.id} style={{ backgroundColor: 'white', width: '90%', height: '60px', padding: '10px', margin: '10px', borderRadius: '5px', boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)', display: 'flex', flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center' }}>
                      <img src={product.image} alt={product.name} style={{ maxWidth: '10%' }} />
                      <h3 style={{ fontSize: '16px' }}>{product.name}</h3>
                      <p>${product.price}</p>
-                    {/*  <button onClick={() => handleUncount(product)}>-</button> */}
                      <p>{product.quantity}</p>
-                   {/*   <button onClick={() => handleCount(product)}>+</button> */}
+                     <div onClick={() => handleDeleteProduct(product.id)} style={{ width: '40px', height:'40px', borderRadius:'50%', marginRight:'10px',background:'#EB7433', display:'flex', alignItems:'center', justifyContent:'center' }}>
+                <img src={deleteIconSvg} alt="delete" />
+              </div>
                    </div>
           ))}
-        <div>Total:${totalOrder}</div>
+        <div>Total: ${totalOrder}</div>
         
-          <button style={{ margin: '10px' }}>Enviar</button>
+          <button /* onClick= {() => handleSend(cart)} */ style={{ margin: '10px' }}>Enviar</button>
           <button>Cancelar</button>
         </div>
       </div>
