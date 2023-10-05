@@ -29,6 +29,7 @@ function MenuOrders({ onAddToCart, onRemoveToCart, onAddName }) {
       }
     };
     fetchProducts();
+    
   }, [token]);
 
   const [activeButton, setActiveButton] = useState(null);
@@ -60,14 +61,7 @@ onRemoveToCart(product);
 
   return (
     <>
-      <div style={{ width: '80%', margin: '10px' }}>
-        <input onChange={(e) => {
-          handleClientName(e.target.value)
-        }}
-          placeholder="Cliente:"
-          style={{ height: '30px', backgroundColor: 'white', width: '100%', color: 'black', border: 'none', borderRadius: '5px'}}
-       />
-      </div>
+      
       <div>
         <Button
           size="lg"
@@ -123,6 +117,14 @@ onRemoveToCart(product);
         >
           Almuerzo / Cena
         </Button>
+      </div>
+      <div style={{ width: '80%', margin: '10px' }}>
+        <input onChange={(e) => {
+          handleClientName(e.target.value)
+        }}
+          placeholder="Cliente:"
+          style={{ height: '30px', backgroundColor: 'white', width: '100%', color: 'black', border: 'none', borderRadius: '5px'}}
+       />
       </div>
       <div style={{ width: '100%', height: '100%', display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
         {productsToShow.map((product) => (

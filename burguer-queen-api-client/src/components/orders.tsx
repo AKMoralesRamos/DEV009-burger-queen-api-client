@@ -3,10 +3,13 @@ import Header from "./header";
 import MeseroNav from "./meseroNavegacion";
 import MenuOrders from "./menuOrders";
 import OrderCart from "./orderCart";
+import { format } from 'date-fns';
+
 
 function Orders() {
   const [cart, setCart] = useState([]);
-  const [clientName, setClientName] = useState([]);
+  const [clientName, setClientName] = useState('');
+
   const containerStyle = {
     backgroundColor: "#FFAA6C",
     minHeight: "100vh",
@@ -57,6 +60,9 @@ function Orders() {
   };
   const token = localStorage.getItem('authToken');
   const handleCreateOrder = async () => {
+    const currentDate = new Date();
+    const formattedDate = format(currentDate, 'yyyy-MM-dd    HH:mm:ss');
+
     try {
       const response = await fetch('http://localhost:8080/orders', {
         method: 'POST',
@@ -66,17 +72,24 @@ function Orders() {
         },
         body: JSON.stringify({
           userId: 1,
-          client: {clientName},
-          products: cart,
+          client: clientName,
           status: "pending",
-          dateEntry: "05"
+          dateEntry: formattedDate,
+          products: cart.map((product) => ({
+            name: product.name, // Nombre del producto
+            price: product.price, // Precio del producto
+            type: product.type, // Tipo del producto
+            qty: product.qty,// Otros campos si los tienes
+          })),
+       
         }),
       });
       if (response.ok) {
         await response.json();
        
         console.log('orden creada');
-      
+        setCart([]);
+        setClientName('');
        
       } else if(!response.ok){
         setErrorMessage('Error al mostrar orden');

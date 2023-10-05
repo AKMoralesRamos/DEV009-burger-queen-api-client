@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import Header from './header';
 import MeseroNav from './meseroNavegacion';
+import { format } from 'date-fns';
 
 function Orders() {
   const containerStyle = {
@@ -81,7 +82,8 @@ function Orders() {
                 >
                   {getStatusButtonStyle(order.status).text}
                 </button>
-                <p>Fecha de Entrada: {order.dataEntry}</p>
+                
+                <p>Fecha de Entrada: {order.dateEntry}</p>
                 <p>Fecha de Procesamiento: {order.dateProcessed || 'N/A'}</p>
                 {order.products.length > 0 && (
                   <>
@@ -98,10 +100,10 @@ function Orders() {
                       <tbody>
                         {order.products.map((product) => (
                           <tr key={product.product?.id}>
-                            <td style={{ padding: '0 20px' }}>{product.product?.name}</td>
+                            <td style={{ padding: '0 20px' }}>{product.name}</td>
                             <td style={{ padding: '0 20px' }}>{product.qty}</td>
-                            <td style={{ padding: '0 20px' }}>${product.product?.price}</td>
-                            <td style={{ padding: '0 20px' }}>{product.product?.type}</td>
+                            <td style={{ padding: '0 20px' }}>${product.price}</td>
+                            <td style={{ padding: '0 20px' }}>{product.type}</td>
                           </tr>
                         ))}
                       </tbody>
