@@ -1,10 +1,14 @@
 import { useState, useEffect } from 'react';
 import deleteIconSvg from '../assets/delete_FILL0_wght400_GRAD0_opsz24.svg';
+import { format } from 'date-fns';
 
-function OrderCart({ cart, clientName, onNewCart, /* onSendOrder */ }) {
+
+function OrderCart({ cart, clientName, onNewCart, sendOrder }) {
    const [totalOrder, setTotalOrder] = useState('');
   const [products, setProducts] = useState([]);
   const token = localStorage.getItem('authToken');
+  const [orderDate, setOrderDate] = useState('');
+
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -28,6 +32,9 @@ function OrderCart({ cart, clientName, onNewCart, /* onSendOrder */ }) {
         console.error('Error en la solicitud de productos:', error);
       }
     };
+    const currentDate = new Date();
+  const formattedDate = format(currentDate, 'yyyy-MM-dd   HH:mm:ss'); // Formato ISO 8601
+  setOrderDate(formattedDate);
     fetchProducts();
   }, [token]);
 
@@ -66,7 +73,7 @@ function OrderCart({ cart, clientName, onNewCart, /* onSendOrder */ }) {
     let totalOrder = 0;
     for (const product of cart) {
       /* const currentCount = productCounters[product.id] || 0; */
-      totalOrder += product.quantity * product.price;
+      totalOrder += product.qty * product.price;
     }
   setTotalOrder(totalOrder);
   },//[cart, productCounters]);
@@ -85,23 +92,27 @@ function OrderCart({ cart, clientName, onNewCart, /* onSendOrder */ }) {
     <>
       <div style={containerStyle}>
         <h4>Resumen de la orden</h4>
-        <p>Cliente: {clientName}</p>
+        <p>Cliente: {typeof clientName === 'object' ? clientName.clientName : clientName}</p>
+        <p>Fecha de Entrada: {orderDate}</p>
+
+
         <div>
           {cart.map((product) => (
                      <div key={product.id} style={{ backgroundColor: 'white', width: '90%', height: '60px', padding: '10px', margin: '10px', borderRadius: '5px', boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)', display: 'flex', flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center' }}>
                      <img src={product.image} alt={product.name} style={{ maxWidth: '10%' }} />
                      <h3 style={{ fontSize: '16px' }}>{product.name}</h3>
                      <p>${product.price}</p>
-                     <p>{product.quantity}</p>
+                     <p>{product.qty}</p>
+                     <p>{product.type}</p>
                      <div onClick={() => handleDeleteProduct(product.id)} style={{ width: '40px', height:'40px', borderRadius:'50%', marginRight:'10px',background:'#EB7433', display:'flex', alignItems:'center', justifyContent:'center' }}>
                 <img src={deleteIconSvg} alt="delete" />
               </div>
                    </div>
           ))}
         <div>Total: ${totalOrder}</div>
-        
-          <button /* onClick= {() => handleSend(cart)} */ style={{ margin: '10px' }}>Enviar</button>
-          <button>Cancelar</button>
+        <button>Cancelar</button>
+          <button onClick= {() => sendOrder()} style={{ margin: '10px' }}>Enviar</button>
+         
         </div>
       </div>
     </>
