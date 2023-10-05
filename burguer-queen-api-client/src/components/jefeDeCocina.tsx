@@ -1,6 +1,8 @@
 import React from 'react';
 import Header from './header';
 import Button from 'react-bootstrap/Button';
+import { useEffect, useState } from 'react';
+import { format } from 'date-fns';
 
 function JefeDeCocina () {
 
@@ -8,19 +10,103 @@ function JefeDeCocina () {
         backgroundColor: '#FFAA6C',
         minHeight: '100vh',
         display: 'flex',
-        flexDirection: 'row',
-        alignItems: 'flex-start',
         justifyContent: 'center',
         padding: '20px',
+        flexDirection: 'column',
+        alignItems: 'center', 
+     
       };
+      const getStatusButtonStyle = (status) => {
+        switch (status) {
+          case 'pending':
+            return { text: 'En proceso', color: '#E7372C' };
+          case 'delivered':
+            return { text: 'Entregado', color: '#93C32F' };
+          case 'ready':
+            return { text: 'Listo', color: '#F8CA23' };
+          default:
+            return { text: 'Estado', color: 'green' };
+        }
+      };
+    
+      const [orders, setOrders] = useState([]);
+      const token = localStorage.getItem('authToken');
+    
+      useEffect(() => {
+        const fetchOrders = async () => {
+          try {
+            const response = await fetch('http://localhost:8080/orders', {
+              method: 'GET',
+              headers: {
+                'Content-Type': 'application/json',
+                Authorization: token,
+              },
+            });
+            if (response.ok) {
+              const data = await response.json();
+              setOrders(data);
+            } else {
+              console.error('Error al cargar órdenes');
+            }
+          } catch (error) {
+            console.error('Error en la solicitud de órdenes:', error);
+          }
+        };
+        fetchOrders();
+      }, [token]);
+
+      const toggleOrderStatus = async (orderId, currentStatus) => {
+        // Aquí puedes implementar la lógica para cambiar el estado de la orden
+        let newStatus;
+        switch (currentStatus) {
+          case 'pending':
+            newStatus = 'ready';
+            break;
+          case 'ready':
+            newStatus = 'delivered';
+            break;
+          case 'delivered':
+            newStatus = 'pending';
+            break;
+          default:
+            break;
+        }
+    
+        try {
+          const response = await fetch(`http://localhost:8080/orders/${orderId}`, {
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: token,
+            },
+            body: JSON.stringify({ status: newStatus }),
+          });
+          if (response.ok) {
+            // Actualiza el estado local de las órdenes después de cambiar el estado en el servidor
+            const updatedOrders = orders.map((order) => {
+              if (order.id === orderId) {
+                return { ...order, status: newStatus };
+              }
+              return order;
+            });
+            setOrders(updatedOrders);
+          } else {
+            console.error('Error al actualizar el estado de la orden');
+          }
+        } catch (error) {
+          console.error('Error al enviar la solicitud:', error);
+        }
+      };
+
 
     return (
     <>
     <Header />
     <div style={containerStyle}>
     <div className="d-grid gap-4 "></div>
-   
-    <Button
+    <div style={{ width: '50%'}}>
+
+   <Button
         size="lg"
         style={{
           width: '40%',
@@ -35,6 +121,57 @@ function JefeDeCocina () {
         >
         Pedidos cocina
       </Button>
+      </div>
+   
+      <div style={{ width: '40%' }}></div>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '50%', height: '20%' }}>
+          {orders.length > 0 ? (
+            orders.map((order) => (
+              <div key={order.id} style={{ backgroundColor: '#EC8133', width: '150%', height: '30%', margin: '5px', padding: '10px', border: '1px solid #ccc', borderRadius: '5px', boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+                <p>ID del Pedido: {order.id}</p>
+                <p>ID Usuario: {order.userId}</p>
+                <h5>Cliente: {order.client}</h5>
+         
+                  <button
+                  style={{ backgroundColor: getStatusButtonStyle(order.status).color, display: 'flex', marginLeft: 'auto' }}
+                  onClick={() => toggleOrderStatus(order.id, order.status)}
+                >
+                  {getStatusButtonStyle(order.status).text}
+                </button>
+                <p>Fecha de Entrada: {order.dateEntry}</p>
+                <p>Fecha de Procesamiento: {order.dateProcessed || 'N/A'}</p>
+                {order.products.length > 0 && (
+                  <>
+                    <h5>Productos:</h5>
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>Nombre del Producto</th>
+                          <th>Cantidad</th>
+                          <th>Precio</th>
+                          <th>Tipo</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {order.products.map((product) => (
+                          <tr key={product.product?.id}>
+                            <td style={{ padding: '0 20px' }}>{product.name}</td>
+                            <td style={{ padding: '0 20px' }}>{product.qty}</td>
+                            <td style={{ padding: '0 20px' }}>${product.price}</td>
+                            <td style={{ padding: '0 20px' }}>{product.type}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </>
+                )}
+              </div>
+            ))
+          ) : (
+            <p>No hay órdenes disponibles.</p>
+          )}
+        </div>
+
       </div>
     </>
     );
