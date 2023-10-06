@@ -3,7 +3,7 @@ import Header from './header';
 import MeseroNav from './meseroNavegacion';
 import { format } from 'date-fns';
 
-function Orders() {
+function OrdersReady() {
   const containerStyle = {
     backgroundColor: '#FFAA6C',
     minHeight: '100vh',
@@ -121,4 +121,4 @@ function Orders() {
   );
 }
 
-export default Orders;
+export default OrdersReady;
