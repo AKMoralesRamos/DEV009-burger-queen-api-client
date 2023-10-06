@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react';
 import Header from './header';
 import MeseroNav from './meseroNavegacion';
-import { format } from 'date-fns';
 
-function OrdersReady() {
+function Orders() {
   const containerStyle = {
     backgroundColor: '#FFAA6C',
     minHeight: '100vh',
@@ -82,8 +81,7 @@ function OrdersReady() {
                 >
                   {getStatusButtonStyle(order.status).text}
                 </button>
-                
-                <p>Fecha de Entrada: {order.dateEntry}</p>
+                <p>Fecha de Entrada: {order.dataEntry}</p>
                 <p>Fecha de Procesamiento: {order.dateProcessed || 'N/A'}</p>
                 {order.products.length > 0 && (
                   <>
@@ -100,10 +98,10 @@ function OrdersReady() {
                       <tbody>
                         {order.products.map((product) => (
                           <tr key={product.product?.id}>
-                            <td style={{ padding: '0 20px' }}>{product.name}</td>
+                            <td style={{ padding: '0 20px' }}>{product.product?.name}</td>
                             <td style={{ padding: '0 20px' }}>{product.qty}</td>
-                            <td style={{ padding: '0 20px' }}>${product.price}</td>
-                            <td style={{ padding: '0 20px' }}>{product.type}</td>
+                            <td style={{ padding: '0 20px' }}>${product.product?.price}</td>
+                            <td style={{ padding: '0 20px' }}>{product.product?.type}</td>
                           </tr>
                         ))}
                       </tbody>
@@ -121,4 +119,4 @@ function OrdersReady() {
   );
 }
 
-export default OrdersReady;
+export default Orders;
