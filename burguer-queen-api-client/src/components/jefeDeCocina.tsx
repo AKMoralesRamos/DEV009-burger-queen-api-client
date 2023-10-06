@@ -56,7 +56,6 @@ function JefeDeCocina () {
       }, [token]);
 
       const toggleOrderStatus = async (orderId, currentStatus) => {
-        // Aquí puedes implementar la lógica para cambiar el estado de la orden
         let newStatus;
         switch (currentStatus) {
           case 'pending':
@@ -74,22 +73,20 @@ function JefeDeCocina () {
     
         try {
           const response = await fetch(`http://localhost:8080/orders/${orderId}`, {
-            method: 'PUT',
+            method: 'PATCH',
             headers: {
               'Content-Type': 'application/json',
               Authorization: token,
             },
             body: JSON.stringify({ status: newStatus }),
           });
-          if (response.ok) {
-            // Actualiza el estado local de las órdenes después de cambiar el estado en el servidor
-            const updatedOrders = orders.map((order) => {
-              if (order.id === orderId) {
-                return { ...order, status: newStatus };
+      
+            if (response.ok) {
+              const updatedOrder = orders.find((order) => order.id === orderId);
+              if (updatedOrder) {
+                updatedOrder.status = newStatus;
+                setOrders([...orders]);
               }
-              return order;
-            });
-            setOrders(updatedOrders);
           } else {
             console.error('Error al actualizar el estado de la orden');
           }
@@ -97,6 +94,28 @@ function JefeDeCocina () {
           console.error('Error al enviar la solicitud:', error);
         }
       };
+
+      // Función para calcular el tiempo transcurrido en minutos
+  const calculateElapsedTime = (order) => {
+    const arrivalTime = new Date(order.dateEntry);
+    const completionTime = new Date(order.dateProcessed);
+
+    // Calcular la diferencia en milisegundos
+    const timeDifference = completionTime - arrivalTime;
+
+    // Convertir la diferencia en milisegundos a minutos
+    const minutes = Math.floor(timeDifference / (1000 * 60));
+
+    return minutes;
+  };
+   // Función para mostrar el tiempo transcurrido en minutos si la orden está entregada
+   const showElapsedTime = (order) => {
+    if (order.status === 'delivered') {
+      const elapsedTime = calculateElapsedTime(order);
+      return `Tiempo de preparación: ${elapsedTime} minutos`;
+    }
+    return '';
+  };
 
 
     return (
@@ -163,6 +182,8 @@ function JefeDeCocina () {
                         ))}
                       </tbody>
                     </table>
+                    {/* Mostrar tiempo transcurrido solo para órdenes entregadas */}
+          <p>{showElapsedTime(order)}</p>
                   </>
                 )}
               </div>
