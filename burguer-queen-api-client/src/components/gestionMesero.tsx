@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import Header from './header';
 import MeseroNav from './meseroNavegacion';
 import { format } from 'date-fns';
-
+//mesero
 function OrdersReady() {
   const containerStyle = {
     backgroundColor: '#FFAA6C',
