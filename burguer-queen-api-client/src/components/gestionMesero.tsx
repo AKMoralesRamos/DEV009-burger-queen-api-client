@@ -1,8 +1,14 @@
 import { useEffect, useState } from 'react';
 import Header from './header';
 import MeseroNav from './meseroNavegacion';
+<<<<<<< HEAD
 
 function Orders() {
+=======
+import { format } from 'date-fns';
+//mesero
+function OrdersReady() {
+>>>>>>> 1d981ea27e65c10e84dc2f970ea90d3ca9d462e0
   const containerStyle = {
     backgroundColor: '#FFAA6C',
     minHeight: '100vh',

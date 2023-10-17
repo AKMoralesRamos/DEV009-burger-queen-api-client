@@ -3,8 +3,6 @@ import Header from './header';
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import { useNavigate } from 'react-router-dom';
-
-
 function Admin() {
   const containerStyle = {
     backgroundColor: '#FFAA6C',
@@ -15,26 +13,21 @@ function Admin() {
     justifyContent: 'center',
     padding: '20px',
   };
-
   const navigate = useNavigate();
-
   const [activeButton, setActiveButton] = useState(null);
-
   const handleGestionProductos = () => {
     navigate("/gestionProductos");
     setActiveButton("gestionProductos");
   };
-
   const handleGestionTrabajadores = () => {
     navigate("/gestionTrabajadores");
     setActiveButton("gestionTrabajadores");
-  }; 
+  };
   return (
     <>
       <Header />
       <div style={containerStyle}>
         <div className="d-grid gap-4 "></div>
-     
       <Button
         size="lg"
         style={{
@@ -91,5 +84,11 @@ function Admin() {
     </>
   );
 }
-
 export default Admin;
+
+
+
+
+
+
+
