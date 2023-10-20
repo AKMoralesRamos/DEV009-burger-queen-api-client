@@ -37,6 +37,7 @@ function MeseroNav() {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    cursor:'pointer',
     boxShadow: '0 2px 4px rgba(0, 0, 0, 0.3)',
   }}>
     <strong>Pedidos</strong><img src={gestionGo} alt="gestionGo" />

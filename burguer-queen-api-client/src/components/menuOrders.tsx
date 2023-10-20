@@ -112,7 +112,7 @@ onRemoveToCart(product);
       </div>
       <div style={{ width: '100%', height: '100%', display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
         {productsToShow.map((product) => (
-          <div key={product.id} style={{ boxShadow: '0 2px 4px rgba(0, 0, 0, 0.5)', backgroundColor: 'white', width: '90%', height: '60px', padding: '10px', margin: '10px', borderRadius: '5px', boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)', display: 'flex', flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center' }}>
+          <div key={product.id} style={{ boxShadow: '0 2px 4px rgba(0, 0, 0, 0.5)', backgroundColor: 'white', width: '90%', height: '60px', padding: '10px', margin: '10px', borderRadius: '5px', display: 'flex', flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center' }}>
             <img src={product.image} alt={product.name} style={{ maxWidth: '10%' }} />
             <h3 style={{ fontSize: '16px' }}>{product.name}</h3>
             <p>${product.price}</p>
