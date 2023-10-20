@@ -81,6 +81,7 @@ function Orders() {
             type: product.type, // Tipo del producto
             qty: product.qty,// Otros campos si los tienes
           })),
+      
        
         }),
       });

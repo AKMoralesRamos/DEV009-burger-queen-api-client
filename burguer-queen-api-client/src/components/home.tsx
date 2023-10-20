@@ -40,13 +40,13 @@ function Home() {
           width: '554px',
           height: '80px',
           borderRadius: '10px',
-          color: 'black',
+          color: 'white',
           background: '#EB7433',
           borderColor:'#EB7433',
           transition: 'background 0.3s, color 0.3s', 
         }}
         onMouseEnter={(e) => {
-          e.target.style.background = '#EF5F10'; 
+          e.target.style.background = '#171718'; 
           e.target.style.color = 'white'; 
         }}
         onMouseLeave={(e) => {
@@ -56,7 +56,7 @@ function Home() {
         }}
         onClick={handleOrders}
       >
-      Mesero 
+      <strong>Mesero</strong> 
       </Button>
       <Button
         size="lg"
@@ -64,13 +64,13 @@ function Home() {
           width: '554px',
           height: '80px',
           borderRadius: '10px',
-          color: 'black',
+          color: 'white',
           background: '#EB7433',
           borderColor:'#EB7433',
           transition: 'background 0.3s, color 0.3s',
         }}
         onMouseEnter={(e) => {
-          e.target.style.background = '#EF5F10'; // Cambia el color de fondo al hacer hover
+          e.target.style.background = '#171718'; // Cambia el color de fondo al hacer hover
           e.target.style.color = 'white'; // Cambia el color del texto al hacer hover
         }}
         onMouseLeave={(e) => {
@@ -80,7 +80,7 @@ function Home() {
         }}
         onClick={handleJefeDeCocina}
       >
-      Jefe de cocina
+      <strong>Jefe de cocina</strong>
       </Button>
       <Button
         size="lg"
@@ -88,13 +88,13 @@ function Home() {
           width: '554px',
           height: '80px',
           borderRadius: '10px',
-          color: 'black',
+          color: 'white',
           background: '#EB7433',
           borderColor:'#EB7433',
           transition: 'background 0.3s, color 0.3s',
         }}
         onMouseEnter={(e) => {
-          e.target.style.background = '#EF5F10'; // Cambia el color de fondo al hacer hover
+          e.target.style.background = '#171718'; // Cambia el color de fondo al hacer hover
           e.target.style.color = 'white'; // Cambia el color del texto al hacer hover
         }}
         onMouseLeave={(e) => {
@@ -104,7 +104,7 @@ function Home() {
         }}
         onClick={handleAdmin}
       >
-        Admin
+       <strong>Admin</strong>
       </Button>
       </div>
   

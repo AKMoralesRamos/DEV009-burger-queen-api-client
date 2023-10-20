@@ -36,13 +36,13 @@ function MenuOrders({ onAddToCart, onRemoveToCart, onAddName }) {
 
   const handleDesayunoClick = () => {
     setActiveButton("desayuno");
-    const breakfast = products.filter((product) => product.type === 'Desayuno')
+    const breakfast = products.filter((product) => product.type === 'Desayuno' || product.type === 'desayuno')
     setProductsToShow(breakfast);
   };
 
   const handleAlmuerzoCenaClick = () => {
     setActiveButton("almuerzoCena");
-    const lunch = products.filter((product) => product.type === 'Almuerzo')
+    const lunch = products.filter((product) => product.type === 'Almuerzo' || product.type === 'almuerzo')
    setProductsToShow(lunch);
   };
 
@@ -70,22 +70,13 @@ onRemoveToCart(product);
             height: '80%',
             margin: '10px',
             borderRadius: '10px',
-            color: 'black',
-            background: activeButton === "desayuno" ? '#EF5F10' : '#EB7433',
+            color: 'white',
+            background: activeButton === "desayuno" ? '#171718' : '#EB7433',
             borderColor: '#EB7433',
             transition: 'background 0.3s, color 0.3s',
             textDecoration: activeButton === "desayuno" ? 'underline' : 'none'
           }}
-          onMouseEnter={(e) => {
-            e.target.style.background = activeButton === "desayuno" ? '#EF5F10' : '#EB7433';
-            e.target.style.color = 'white';
-          }}
-          onMouseLeave={(e) => {
-            if (activeButton !== "desayuno") {
-              e.target.style.background = '#EB7433';
-              e.target.style.color = 'initial';
-            }
-          }}
+          
           onClick={handleDesayunoClick}
         >
           Desayuno
@@ -97,22 +88,13 @@ onRemoveToCart(product);
             height: '80%',
             margin: '10px',
             borderRadius: '10px',
-            color: 'black',
-            background: activeButton === "almuerzoCena" ? '#EF5F10' : '#EB7433',
+            color: 'white',
+            background: activeButton === "almuerzoCena" ? '#171718' : '#EB7433',
             borderColor: '#EB7433',
             transition: 'background 0.3s, color 0.3s',
             textDecoration: activeButton === "almuerzoCena" ? 'underline' : 'none'
           }}
-          onMouseEnter={(e) => {
-            e.target.style.background = activeButton === "almuerzoCena" ? '#EF5F10' : '#EB7433';
-            e.target.style.color = 'white';
-          }}
-          onMouseLeave={(e) => {
-            if (activeButton !== "almuerzoCena") {
-              e.target.style.background = '#EB7433';
-              e.target.style.color = 'initial';
-            }
-          }}
+          
           onClick={handleAlmuerzoCenaClick}
         >
           Almuerzo / Cena
@@ -123,7 +105,7 @@ onRemoveToCart(product);
           handleClientName(e.target.value)
         }}
           placeholder="Cliente:"
-          style={{ height: '30px', backgroundColor: 'white', width: '100%', color: 'black', border: 'none', borderRadius: '5px'}}
+          style={{ height: '30px', backgroundColor: 'rgba(255, 255, 255, 0.8)', width: '100%', color: 'black', border: 'none', borderRadius: '5px'}}
        />
       </div>
       <div style={{ width: '100%', height: '100%', display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>

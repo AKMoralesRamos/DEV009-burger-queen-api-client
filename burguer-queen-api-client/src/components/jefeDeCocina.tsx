@@ -1,10 +1,13 @@
-import React from 'react';
+//import React from 'react';
 import Header from './header';
 import Button from 'react-bootstrap/Button';
 import { useEffect, useState } from 'react';
-import { format } from 'date-fns';
+import Modal from 'react-bootstrap/Modal';
+//import { format } from 'date-fns';
 //cocina
 function JefeDeCocina () {
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [orderToDelete, setOrderToDelete] = useState(null);
 
     const containerStyle = {
         backgroundColor: '#FFAA6C',
@@ -19,7 +22,7 @@ function JefeDeCocina () {
       const getStatusButtonStyle = (status) => {
         switch (status) {
           case 'pending':
-            return { text: 'En proceso', color: '#E7372C' };
+            return { text: 'Pendiente', color: '#E7372C' };
           case 'delivered':
             return { text: 'Entregado', color: '#93C32F' };
           case 'ready':
@@ -117,85 +120,118 @@ function JefeDeCocina () {
     return '';
   };
 
+  const confirmDelete = async () => {
+    if (orderToDelete) {
+      try {
+        const response = await fetch(`http://localhost:8080/orders/${orderToDelete}`, {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: token,
+          },
+        });
 
-    return (
-    <>
+        if (response.ok) {
+          // Eliminar la orden de la lista de órdenes
+          setOrders(orders.filter((order) => order.id !== orderToDelete));
+        } else {
+          console.error('Error al eliminar la orden');
+        }
+      } catch (error) {
+        console.error('Error al enviar la solicitud de eliminación:', error);
+      }
+
+      // Cerrar el modal después de eliminar
+      setShowDeleteModal(false);
+      setOrderToDelete(null);
+    }
+  };
+
+
+
+  return (
+  <>
     <Header />
     <div style={containerStyle}>
-    <div className="d-grid gap-4 "></div>
-    <div style={{ width: '50%'}}>
-
-   <Button
-        size="lg"
-        style={{
-          width: '40%',
-          height: '80%',
-          margin: '10px',
-          borderRadius: '10px',
-          color: 'black',
-          background:'#EB7433' ,
-          borderColor: '#EB7433',
-          transition: 'background 0.3s, color 0.3s',
-        }}
-        >
-        Pedidos cocina
-      </Button>
-      </div>
-   
-      <div style={{ width: '40%' }}></div>
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '50%', height: '20%' }}>
-          {orders.length > 0 ? (
-            orders.map((order) => (
-              <div key={order.id} style={{ backgroundColor: '#EC8133', width: '150%', height: '30%', margin: '5px', padding: '10px', border: '1px solid #ccc', borderRadius: '5px', boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
-                <p>ID del Pedido: {order.id}</p>
-                <p>ID Usuario: {order.userId}</p>
-                <h5>Cliente: {order.client}</h5>
-         
-                  <button
-                  style={{ backgroundColor: getStatusButtonStyle(order.status).color, display: 'flex', marginLeft: 'auto' }}
-                  onClick={() => toggleOrderStatus(order.id, order.status)}
-                >
-                  {getStatusButtonStyle(order.status).text}
-                </button>
-                <p>Fecha de Entrada: {order.dateEntry}</p>
-                <p>Fecha de Procesamiento: {order.dateProcessed || 'N/A'}</p>
+      <h2 style={{ borderBottom: '2px solid black' }}>GESTIÓN DE COCINA</h2>
+      <div style={{ width: '100%', display: 'flex', justifyContent: 'center', flexWrap: 'wrap', alignItems: 'flex-start' }}>
+        {orders.length > 0 ? (
+          <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
+            {orders.map((order) => (
+              <div key={order.id} style={{background: 'rgba(255, 255, 255, 0.5)', width: '40%', margin: '10px', padding: '10px', borderRadius: '5px', boxShadow: '0 2px 4px rgba(0, 0, 0, 0.3)' }}>
+                <p><strong>ID del Pedido:</strong> {order.id}</p>
+                <p><strong>ID Usuario:</strong> {order.userId}</p>
+                <p><strong>Cliente:</strong> {order.client}</p>
+                <p><strong>Fecha de Entrada:</strong> {order.dateEntry}</p>
+                <p><strong>Fecha de Procesamiento:</strong> {order.dateProcessed || 'N/A'}</p>
                 {order.products.length > 0 && (
                   <>
-                    <h5>Productos:</h5>
-                    <table>
-                      <thead>
-                        <tr>
-                          <th>Nombre del Producto</th>
-                          <th>Cantidad</th>
-                          <th>Precio</th>
-                          <th>Tipo</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {order.products.map((product) => (
-                          <tr key={product.product?.id}>
-                            <td style={{ padding: '0 20px' }}>{product.name}</td>
-                            <td style={{ padding: '0 20px' }}>{product.qty}</td>
-                            <td style={{ padding: '0 20px' }}>${product.price}</td>
-                            <td style={{ padding: '0 20px' }}>{product.type}</td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                    {/* Mostrar tiempo transcurrido solo para órdenes entregadas */}
-          <p>{showElapsedTime(order)}</p>
+                    <fieldset style={{ minHeight: '185px', border: '4px solid black', borderRadius: '5px' }}>
+                      <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
+                        <table style={{ border: '1px solid black', width: '100%' }}>
+                          <thead>
+                            <tr>
+                              <th style={{ border: '1px solid black', padding: '5px' }}>Nombre del Producto</th>
+                              <th style={{ border: '1px solid black', padding: '5px' }}>Cantidad</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {order.products.map((product) => (
+                              <tr key={product.product?.id}>
+                                <td style={{ border: '1px solid black', padding: '5px' }}>{product.name}</td>
+                                <td style={{ border: '1px solid black', padding: '5px' }}>{product.qty}</td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                      <p>{showElapsedTime(order)}</p>
+                    </fieldset>
+                    <div style={{ width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'flex-end' }}>
+                      <button
+                        style={{ backgroundColor: getStatusButtonStyle(order.status).color, width: '130px', margin: '10px' }}
+                        onClick={() => toggleOrderStatus(order.id, order.status)}
+                      >
+                        {getStatusButtonStyle(order.status).text}
+                      </button>
+                      <button
+                      style={{ width: '130px', margin: '10px' }}
+                      onClick={() => {
+                        setShowDeleteModal(true);
+                        setOrderToDelete(order.id);
+                      }}
+                    >
+                      Eliminar
+                    </button>
+                    </div>
                   </>
                 )}
               </div>
-            ))
-          ) : (
-            <p>No hay órdenes disponibles.</p>
-          )}
-        </div>
-
+            ))}
+          </div>
+        ) : (
+          <p>No hay órdenes disponibles.</p>
+        )}
       </div>
-    </>
-    );
+    </div>
+    <Modal show={showDeleteModal} onHide={() => setShowDeleteModal(false)}>
+        <Modal.Header closeButton style={{ background: '#EB7433' }}>
+          <Modal.Title>Oops!</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          ¿Estás seguro de que deseas eliminar esta orden?
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="dark" onClick={() => setShowDeleteModal(false)}>
+            Cancelar
+          </Button>
+          <Button variant="dark" onClick={confirmDelete}>
+            Eliminar
+          </Button>
+        </Modal.Footer>
+      </Modal>
+  </>
+);
 
 }
 export default JefeDeCocina;

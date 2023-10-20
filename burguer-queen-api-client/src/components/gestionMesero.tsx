@@ -1,14 +1,13 @@
 import { useEffect, useState } from 'react';
 import Header from './header';
+import { useNavigate } from 'react-router-dom';
+import returnBack from '../assets/arrow_back_FILL0_wght400_GRAD0_opsz24.svg'
 import MeseroNav from './meseroNavegacion';
-<<<<<<< HEAD
-
-function Orders() {
-=======
 import { format } from 'date-fns';
 //mesero
 function OrdersReady() {
->>>>>>> 1d981ea27e65c10e84dc2f970ea90d3ca9d462e0
+  const navigate = useNavigate();
+
   const containerStyle = {
     backgroundColor: '#FFAA6C',
     minHeight: '100vh',
@@ -19,12 +18,10 @@ function OrdersReady() {
     justifyContent: 'center',
     padding: '20px',
   };
-
   const [statusButton, setStatusButton] = useState({
     text: 'Estado',
     color: 'green',
   });
-
   const getStatusButtonStyle = (status) => {
     switch (status) {
       case 'pending':
@@ -37,10 +34,8 @@ function OrdersReady() {
         return { text: 'Estado', color: 'green' };
     }
   };
-
   const [orders, setOrders] = useState([]);
   const token = localStorage.getItem('authToken');
-
   useEffect(() => {
     const fetchOrders = async () => {
       try {
@@ -64,12 +59,30 @@ function OrdersReady() {
     fetchOrders();
   }, [token]);
 
+  const handleNewOrder = () => {
+navigate('/orders')
+  }
   return (
     <>
       <Header />
-      <MeseroNav />
       <div style={containerStyle}>
         <div className="d-grid gap-4 "></div>
+        <h2 style={{ borderBottom: '2px solid black' }}>GESTIÓN DE PEDIDOS</h2>
+        <section style={{ width: '95%', display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+  <div onClick={handleNewOrder} style={{
+    width: '140px',
+    height: '40px',
+    borderRadius: '10px',
+    marginRight: '10px',
+    background: '#EB7433',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center'
+  }}>
+    <img src={returnBack} alt="return" /><strong>Nueva Orden</strong>
+  </div>
+</section>
+       
         <div style={{ width: '40%' }}>
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '50%', height: '20%' }}>
@@ -87,7 +100,7 @@ function OrdersReady() {
                 >
                   {getStatusButtonStyle(order.status).text}
                 </button>
-                <p>Fecha de Entrada: {order.dataEntry}</p>
+                <p>Fecha de Entrada: {order.dateEntry}</p>
                 <p>Fecha de Procesamiento: {order.dateProcessed || 'N/A'}</p>
                 {order.products.length > 0 && (
                   <>
@@ -104,10 +117,10 @@ function OrdersReady() {
                       <tbody>
                         {order.products.map((product) => (
                           <tr key={product.product?.id}>
-                            <td style={{ padding: '0 20px' }}>{product.product?.name}</td>
+                            <td style={{ padding: '0 20px' }}>{product.name}</td>
                             <td style={{ padding: '0 20px' }}>{product.qty}</td>
-                            <td style={{ padding: '0 20px' }}>${product.product?.price}</td>
-                            <td style={{ padding: '0 20px' }}>{product.product?.type}</td>
+                            <td style={{ padding: '0 20px' }}>${product.price}</td>
+                            <td style={{ padding: '0 20px' }}>{product.type}</td>
                           </tr>
                         ))}
                       </tbody>
@@ -124,5 +137,4 @@ function OrdersReady() {
     </>
   );
 }
-
-export default Orders;
+export default OrdersReady;
