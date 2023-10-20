@@ -39,79 +39,60 @@ function OrderCart({ cart, clientName, onNewCart, sendOrder }) {
   }, [token]);
 
   const containerStyle = {
-    backgroundColor: '#ffff',
+    backgroundColor: 'rgba(255, 255, 255, 0.5)',
     minHeight: '100vh',
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'flex-start',
+    alignItems: 'center',
     justifyContent: 'left',
-    padding: '30px',
-    borderRadius: '10px'
+    padding: '10px',
+    borderRadius: '10px',
+    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.3)',
   };
 
- /*  const handleCount = (product) => {
-    const updatedCounters = { ...productCounters };
-    const currentCount = updatedCounters[product.id] || 0;
-    // Incrementar el contador y actualizar el estado
-    updatedCounters[product.id] = currentCount + 1;
-    setProductCounters(updatedCounters);
-  }; */
-  
-
- /*  const handleUncount = (product) => {
-    const updatedCounters = { ...productCounters };
-    const currentCount = updatedCounters[product.id] || 0;
-    // Decrementar el contador si es mayor que cero y actualizar el estado
-    if (currentCount > 0) {
-      updatedCounters[product.id] = currentCount - 1;
-      setProductCounters(updatedCounters);
-    }
-  }
-   */
-
+ 
   useEffect(() => {
     let totalOrder = 0;
     for (const product of cart) {
-      /* const currentCount = productCounters[product.id] || 0; */
       totalOrder += product.qty * product.price;
     }
   setTotalOrder(totalOrder);
-  },//[cart, productCounters]);
+  },
   )
 
   const handleDeleteProduct = (productId) => {
     onNewCart(productId);
   
   }
+  const handleCancelOrder = () => {
+    sendOrder("");
+  }
 
- /*  const handleSend = (cart) => {
-    onSendOrder(cart);
-  } */
 
   return (
     <>
       <div style={containerStyle}>
-        <h4>Resumen de la orden</h4>
-        <p>Cliente: {typeof clientName === 'object' ? clientName.clientName : clientName}</p>
-        <p>Fecha de Entrada: {orderDate}</p>
+        <h5>Resumen de la orden</h5>
+        <p><strong>Cliente:</strong> {typeof clientName === 'object' ? clientName.clientName : clientName}</p>
+        <p><strong>Fecha de Entrada:</strong> {orderDate}</p>
 
 
         <div>
           {cart.map((product) => (
-                     <div key={product.id} style={{ backgroundColor: 'white', width: '90%', height: '60px', padding: '10px', margin: '10px', borderRadius: '5px', boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)', display: 'flex', flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center' }}>
+                     <div key={product.id} style={{ backgroundColor: 'white', width: '100%', height: '60px', marginBottom: '10px', borderRadius: '5px', boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)', display: 'flex', flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center' }}>
                      <img src={product.image} alt={product.name} style={{ maxWidth: '10%' }} />
                      <h3 style={{ fontSize: '16px' }}>{product.name}</h3>
                      <p>${product.price}</p>
                      <p>{product.qty}</p>
                      <p>{product.type}</p>
-                     <div onClick={() => handleDeleteProduct(product.id)} style={{ width: '40px', height:'40px', borderRadius:'50%', marginRight:'10px',background:'#EB7433', display:'flex', alignItems:'center', justifyContent:'center' }}>
+                     <div onClick={() => handleDeleteProduct(product.id)} style={{ boxShadow: '0 2px 4px rgba(0, 0, 0, 0.5)', width: '40px', height:'40px', borderRadius:'50%', marginRight:'10px',background:'#EB7433', display:'flex', alignItems:'center', justifyContent:'center' }}>
                 <img src={deleteIconSvg} alt="delete" />
               </div>
                    </div>
           ))}
         <div>Total: ${totalOrder}</div>
-        <button>Cancelar</button>
-          <button onClick= {() => sendOrder()} style={{ margin: '10px' }}>Enviar</button>
+        <button style={{boxShadow: '0 2px 4px rgba(0, 0, 0, 0.3)'}} onClick={() => handleCancelOrder()}>Cancelar</button>
+          <button onClick= {() => sendOrder()} style={{ margin: '10px', boxShadow: '0 2px 4px rgba(0, 0, 0, 0.3)' }}>Enviar</button>
          
         </div>
       </div>

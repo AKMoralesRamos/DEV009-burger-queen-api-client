@@ -95,7 +95,7 @@ function FormLogin() {
       </FloatingLabel>
       <div className="mb-4" style={{ color: 'black' }}>{errorMessage}</div>
       <Button variant="dark" onClick={handleLogin} style={{  width: '90%',
-    height: '10%',borderRadius: '50px' }}>
+    height: '50px',borderRadius: '10px' }}>
         Iniciar sesión
       </Button>
     </div>

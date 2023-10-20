@@ -36,13 +36,13 @@ function MenuOrders({ onAddToCart, onRemoveToCart, onAddName }) {
 
   const handleDesayunoClick = () => {
     setActiveButton("desayuno");
-    const breakfast = products.filter((product) => product.type === 'Desayuno')
+    const breakfast = products.filter((product) => product.type === 'Desayuno' || product.type === 'desayuno')
     setProductsToShow(breakfast);
   };
 
   const handleAlmuerzoCenaClick = () => {
     setActiveButton("almuerzoCena");
-    const lunch = products.filter((product) => product.type === 'Almuerzo')
+    const lunch = products.filter((product) => product.type === 'Almuerzo' || product.type === 'almuerzo')
    setProductsToShow(lunch);
   };
 
@@ -70,22 +70,14 @@ onRemoveToCart(product);
             height: '80%',
             margin: '10px',
             borderRadius: '10px',
-            color: 'black',
-            background: activeButton === "desayuno" ? '#EF5F10' : '#EB7433',
+            color: 'white',
+            background: activeButton === "desayuno" ? '#171718' : '#EB7433',
             borderColor: '#EB7433',
             transition: 'background 0.3s, color 0.3s',
+            boxShadow: '0 2px 4px rgba(0, 0, 0, 0.3)',
             textDecoration: activeButton === "desayuno" ? 'underline' : 'none'
           }}
-          onMouseEnter={(e) => {
-            e.target.style.background = activeButton === "desayuno" ? '#EF5F10' : '#EB7433';
-            e.target.style.color = 'white';
-          }}
-          onMouseLeave={(e) => {
-            if (activeButton !== "desayuno") {
-              e.target.style.background = '#EB7433';
-              e.target.style.color = 'initial';
-            }
-          }}
+          
           onClick={handleDesayunoClick}
         >
           Desayuno
@@ -97,48 +89,40 @@ onRemoveToCart(product);
             height: '80%',
             margin: '10px',
             borderRadius: '10px',
-            color: 'black',
-            background: activeButton === "almuerzoCena" ? '#EF5F10' : '#EB7433',
+            color: 'white',
+            background: activeButton === "almuerzoCena" ? '#171718' : '#EB7433',
             borderColor: '#EB7433',
             transition: 'background 0.3s, color 0.3s',
+            boxShadow: '0 2px 4px rgba(0, 0, 0, 0.3)',
             textDecoration: activeButton === "almuerzoCena" ? 'underline' : 'none'
           }}
-          onMouseEnter={(e) => {
-            e.target.style.background = activeButton === "almuerzoCena" ? '#EF5F10' : '#EB7433';
-            e.target.style.color = 'white';
-          }}
-          onMouseLeave={(e) => {
-            if (activeButton !== "almuerzoCena") {
-              e.target.style.background = '#EB7433';
-              e.target.style.color = 'initial';
-            }
-          }}
+          
           onClick={handleAlmuerzoCenaClick}
         >
           Almuerzo / Cena
         </Button>
       </div>
-      <div style={{ width: '80%', margin: '10px' }}>
+      <div style={{ width: '80%', margin: '10px', boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)' }}>
         <input onChange={(e) => {
           handleClientName(e.target.value)
         }}
           placeholder="Cliente:"
-          style={{ height: '30px', backgroundColor: 'white', width: '100%', color: 'black', border: 'none', borderRadius: '5px'}}
+          style={{ height: '30px', backgroundColor: 'rgba(255, 255, 255, 0.8)', width: '100%', color: 'black', border: 'none', borderRadius: '5px'}}
        />
       </div>
       <div style={{ width: '100%', height: '100%', display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
         {productsToShow.map((product) => (
-          <div key={product.id} style={{ backgroundColor: 'white', width: '90%', height: '60px', padding: '10px', margin: '10px', borderRadius: '5px', boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)', display: 'flex', flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center' }}>
+          <div key={product.id} style={{ boxShadow: '0 2px 4px rgba(0, 0, 0, 0.5)', backgroundColor: 'white', width: '90%', height: '60px', padding: '10px', margin: '10px', borderRadius: '5px', display: 'flex', flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center' }}>
             <img src={product.image} alt={product.name} style={{ maxWidth: '10%' }} />
             <h3 style={{ fontSize: '16px' }}>{product.name}</h3>
             <p>${product.price}</p>
             <section style={{display:'flex',flexDirection:'row'}}>
               <div onClick={() => handleRemoveToCart(product)}
-                style={{ width: '40px', height:'40px', borderRadius:'50%', marginRight:'10px',background:'#EB7433', display:'flex', alignItems:'center', justifyContent:'center' }}>
+                style={{ width: '40px', height:'40px', boxShadow: '0 2px 4px rgba(0, 0, 0, 0.5)', borderRadius:'50%', marginRight:'10px',background:'#EB7433', display:'flex', alignItems:'center', justifyContent:'center' }}>
                 <img src={removeIcon} alt="add" />
               </div>
               <div onClick={() => handleAddToCart(product)}
-                style={{width: '40px', height:'40px', borderRadius:'50%', background:'#EB7433', display:'flex', alignItems:'center', justifyContent:'center' }}>
+                style={{width: '40px', height:'40px', boxShadow: '0 2px 4px rgba(0, 0, 0, 0.5)', borderRadius:'50%', background:'#EB7433', display:'flex', alignItems:'center', justifyContent:'center' }}>
                 <img src={plusIcon} alt="remove" />
               </div>
               </section>
