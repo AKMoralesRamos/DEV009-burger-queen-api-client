@@ -187,7 +187,8 @@ const handleShow = () => {
     background: '#EB7433',
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.3)',
   }}>
     <img src={returnBack} alt="return" />
   </div>
@@ -199,6 +200,7 @@ const handleShow = () => {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.3)',
   }}>
     <img src={addNewProduct} alt="add" />
     <strong>Agregar</strong>
@@ -208,15 +210,15 @@ const handleShow = () => {
   {productsAdmin.map((product) => (
     <div style={{ width: '45%', display: 'flex', justifyContent: 'row', background: 'rgba(255, 255, 255, 0.5)', borderRadius: '10px', padding: '10px', fontSize: '16px', margin: '10px', boxShadow: '0 2px 4px rgba(0, 0, 0, 0.3)' }} key={product.id}>
       <section style={{ width: '40%', display: 'flex', flexDirection: 'column', justifyContent: 'space-around', alignItems: 'center' }}>
-        <div style={{ width: '125px', height: '125px', background: '#171718',borderRadius: '50%', overflow: 'hidden', border: '5px solid #EB7433', boxSizing: 'border-box', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto' }}>
+        <div style={{ width: '125px', height: '125px', background: '#171718', boxShadow: '0 2px 4px rgba(0, 0, 0, 0.5)', borderRadius: '50%', overflow: 'hidden', border: '5px solid #EB7433', boxSizing: 'border-box', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto' }}>
           <img src={product.image} alt={product.name} style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'cover' }} />
         </div>
         <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
-  <div onClick={() => handleEditProduct(product.id)} style={{ width: '50px', height: '50px', borderRadius: '50%', marginBottom: '10px', background: '#EB7433', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '10px' }}>
-    <img src={editIconSvg} alt="edit" style={{ width: '30px', height: '30px' }} />
+  <div onClick={() => handleEditProduct(product.id)} style={{ boxShadow: '0 2px 4px rgba(0, 0, 0, 0.5)', width: '50px', height: '50px', borderRadius: '50%', marginBottom: '10px', background: '#EB7433', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '10px' }}>
+    <img src={editIconSvg} alt="edit" style={{ width: '25px', height: '25px' }} />
   </div>
-  <div onClick={() => handleDeleteProduct(product.id)} style={{ width: '50px', height: '50px', borderRadius: '50%', background: '#EB7433', margin: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-    <img src={deleteIconSvg} alt="delete" style={{ width: '30px', height: '30px' }} />
+  <div onClick={() => handleDeleteProduct(product.id)} style={{ boxShadow: '0 2px 4px rgba(0, 0, 0, 0.5)', width: '50px', height: '50px', borderRadius: '50%', background: '#EB7433', margin: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+    <img src={deleteIconSvg} alt="delete" style={{ width: '25px', height: '25px' }} />
   </div>
 </div>
       </section>

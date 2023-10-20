@@ -44,6 +44,7 @@ function Home() {
           background: '#EB7433',
           borderColor:'#EB7433',
           transition: 'background 0.3s, color 0.3s', 
+          boxShadow: '0 2px 4px rgba(0, 0, 0, 0.5)',
         }}
         onMouseEnter={(e) => {
           e.target.style.background = '#171718'; 
@@ -68,6 +69,7 @@ function Home() {
           background: '#EB7433',
           borderColor:'#EB7433',
           transition: 'background 0.3s, color 0.3s',
+          boxShadow: '0 2px 4px rgba(0, 0, 0, 0.5)',
         }}
         onMouseEnter={(e) => {
           e.target.style.background = '#171718'; // Cambia el color de fondo al hacer hover
@@ -92,6 +94,7 @@ function Home() {
           background: '#EB7433',
           borderColor:'#EB7433',
           transition: 'background 0.3s, color 0.3s',
+          boxShadow: '0 2px 4px rgba(0, 0, 0, 0.5)',
         }}
         onMouseEnter={(e) => {
           e.target.style.background = '#171718'; // Cambia el color de fondo al hacer hover

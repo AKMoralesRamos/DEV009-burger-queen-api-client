@@ -74,6 +74,7 @@ onRemoveToCart(product);
             background: activeButton === "desayuno" ? '#171718' : '#EB7433',
             borderColor: '#EB7433',
             transition: 'background 0.3s, color 0.3s',
+            boxShadow: '0 2px 4px rgba(0, 0, 0, 0.3)',
             textDecoration: activeButton === "desayuno" ? 'underline' : 'none'
           }}
           
@@ -92,6 +93,7 @@ onRemoveToCart(product);
             background: activeButton === "almuerzoCena" ? '#171718' : '#EB7433',
             borderColor: '#EB7433',
             transition: 'background 0.3s, color 0.3s',
+            boxShadow: '0 2px 4px rgba(0, 0, 0, 0.3)',
             textDecoration: activeButton === "almuerzoCena" ? 'underline' : 'none'
           }}
           
@@ -100,7 +102,7 @@ onRemoveToCart(product);
           Almuerzo / Cena
         </Button>
       </div>
-      <div style={{ width: '80%', margin: '10px' }}>
+      <div style={{ width: '80%', margin: '10px', boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)' }}>
         <input onChange={(e) => {
           handleClientName(e.target.value)
         }}
@@ -110,17 +112,17 @@ onRemoveToCart(product);
       </div>
       <div style={{ width: '100%', height: '100%', display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
         {productsToShow.map((product) => (
-          <div key={product.id} style={{ backgroundColor: 'white', width: '90%', height: '60px', padding: '10px', margin: '10px', borderRadius: '5px', boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)', display: 'flex', flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center' }}>
+          <div key={product.id} style={{ boxShadow: '0 2px 4px rgba(0, 0, 0, 0.5)', backgroundColor: 'white', width: '90%', height: '60px', padding: '10px', margin: '10px', borderRadius: '5px', boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)', display: 'flex', flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center' }}>
             <img src={product.image} alt={product.name} style={{ maxWidth: '10%' }} />
             <h3 style={{ fontSize: '16px' }}>{product.name}</h3>
             <p>${product.price}</p>
             <section style={{display:'flex',flexDirection:'row'}}>
               <div onClick={() => handleRemoveToCart(product)}
-                style={{ width: '40px', height:'40px', borderRadius:'50%', marginRight:'10px',background:'#EB7433', display:'flex', alignItems:'center', justifyContent:'center' }}>
+                style={{ width: '40px', height:'40px', boxShadow: '0 2px 4px rgba(0, 0, 0, 0.5)', borderRadius:'50%', marginRight:'10px',background:'#EB7433', display:'flex', alignItems:'center', justifyContent:'center' }}>
                 <img src={removeIcon} alt="add" />
               </div>
               <div onClick={() => handleAddToCart(product)}
-                style={{width: '40px', height:'40px', borderRadius:'50%', background:'#EB7433', display:'flex', alignItems:'center', justifyContent:'center' }}>
+                style={{width: '40px', height:'40px', boxShadow: '0 2px 4px rgba(0, 0, 0, 0.5)', borderRadius:'50%', background:'#EB7433', display:'flex', alignItems:'center', justifyContent:'center' }}>
                 <img src={plusIcon} alt="remove" />
               </div>
               </section>

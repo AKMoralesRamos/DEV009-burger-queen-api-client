@@ -35,21 +35,22 @@ function Admin() {
         <Button
   size="lg"
   style={{
-    width: '30%', // Set a fixed width for square buttons
-    height: '40vh', // Set the same height as the width for a square button
+    width: '30%', 
+    height: '40vh', 
     margin: '20px',
-    borderRadius: '10px', // Keep rounded corners if needed
-    background: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${productsImage})`, // Set the background image
-    backgroundSize: 'cover', // Adjust this as needed
-    backgroundPosition: 'center', // Center the image both horizontally and vertically
-    border: 'none', // Remove the border
+    borderRadius: '10px', 
+    background: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${productsImage})`,
+    backgroundSize: 'cover', 
+    backgroundPosition: 'center', 
+    border: 'none', 
     fontWeight: 'bold',
-     color: 'white',// Text color
-    cursor: 'pointer', // Add a pointer cursor on hover
-    display: 'flex', // Display as a flex container
-    flexDirection: 'column', // Arrange items in a column
-    alignItems: 'center', // Align items to the center
-    justifyContent: 'flex-end', // Align items to the bottom
+     color: 'white',
+    cursor: 'pointer', 
+    display: 'flex', 
+    flexDirection: 'column',
+    alignItems: 'center', 
+    justifyContent: 'flex-end', 
+    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.5)',
   }}
   onClick={handleGestionProductos}
 >
@@ -58,20 +59,21 @@ function Admin() {
 <Button
   size="lg"
   style={{
-    width: '30%', // Set a fixed width for square buttons
-    height: '40vh', // Set the same height as the width for a square button
+    width: '30%', 
+    height: '40vh', 
     margin: '20px',
-    borderRadius: '10px', // Keep rounded corners if needed
-    background: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${workersImage})`, // Set the background image
-    backgroundSize: 'cover', // Adjust this as needed
-    backgroundPosition: 'center', // Center the image both horizontally and vertically
-    border: 'none', // Remove the border
-    color: 'white', // Text color
-    cursor: 'pointer', // Add a pointer cursor on hover
-    display: 'flex', // Display as a flex container
-    flexDirection: 'column', // Arrange items in a column
-    alignItems: 'center', // Align items to the center
-    justifyContent: 'flex-end', // Align items to the bottom
+    borderRadius: '10px',
+    background: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${workersImage})`, 
+    backgroundSize: 'cover', 
+    backgroundPosition: 'center', 
+    border: 'none', 
+    color: 'white', 
+    cursor: 'pointer', 
+    display: 'flex',
+    flexDirection: 'column', 
+    alignItems: 'center', 
+    justifyContent: 'flex-end', 
+    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.5)',
   }}
   onClick={handleGestionTrabajadores}
 >

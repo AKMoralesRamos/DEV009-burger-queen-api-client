@@ -45,29 +45,29 @@ function OrderCart({ cart, clientName, onNewCart, sendOrder }) {
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'left',
-    padding: '30px',
-    borderRadius: '10px'
+    padding: '10px',
+    borderRadius: '10px',
+    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.3)',
   };
 
  
   useEffect(() => {
     let totalOrder = 0;
     for (const product of cart) {
-      /* const currentCount = productCounters[product.id] || 0; */
       totalOrder += product.qty * product.price;
     }
   setTotalOrder(totalOrder);
-  },//[cart, productCounters]);
+  },
   )
 
   const handleDeleteProduct = (productId) => {
     onNewCart(productId);
   
   }
+  const handleCancelOrder = () => {
+    sendOrder("");
+  }
 
- /*  const handleSend = (cart) => {
-    onSendOrder(cart);
-  } */
 
   return (
     <>
@@ -85,14 +85,14 @@ function OrderCart({ cart, clientName, onNewCart, sendOrder }) {
                      <p>${product.price}</p>
                      <p>{product.qty}</p>
                      <p>{product.type}</p>
-                     <div onClick={() => handleDeleteProduct(product.id)} style={{ width: '40px', height:'40px', borderRadius:'50%', marginRight:'10px',background:'#EB7433', display:'flex', alignItems:'center', justifyContent:'center' }}>
+                     <div onClick={() => handleDeleteProduct(product.id)} style={{ boxShadow: '0 2px 4px rgba(0, 0, 0, 0.5)', width: '40px', height:'40px', borderRadius:'50%', marginRight:'10px',background:'#EB7433', display:'flex', alignItems:'center', justifyContent:'center' }}>
                 <img src={deleteIconSvg} alt="delete" />
               </div>
                    </div>
           ))}
         <div>Total: ${totalOrder}</div>
-        <button>Cancelar</button>
-          <button onClick= {() => sendOrder()} style={{ margin: '10px' }}>Enviar</button>
+        <button style={{boxShadow: '0 2px 4px rgba(0, 0, 0, 0.3)'}} onClick={() => handleCancelOrder()}>Cancelar</button>
+          <button onClick= {() => sendOrder()} style={{ margin: '10px', boxShadow: '0 2px 4px rgba(0, 0, 0, 0.3)' }}>Enviar</button>
          
         </div>
       </div>

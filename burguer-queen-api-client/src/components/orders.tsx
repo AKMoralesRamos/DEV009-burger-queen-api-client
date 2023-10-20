@@ -9,6 +9,7 @@ import { format } from 'date-fns';
 function Orders() {
   const [cart, setCart] = useState([]);
   const [clientName, setClientName] = useState('');
+  const [totalOrder, setTotalOrder] = useState('');
 
   const containerStyle = {
     backgroundColor: "#FFAA6C",
@@ -48,6 +49,9 @@ function Orders() {
     } 
   };
   
+/* const handleTotalOrder = () => {
+
+} */
 
   const handleClientName = (value) => {
     const lettersOnly = value.replace(/[^A-Za-z]/g, ' ').toUpperCase();
@@ -81,6 +85,7 @@ function Orders() {
             type: product.type, // Tipo del producto
             qty: product.qty,// Otros campos si los tienes
           })),
+          Total: totalOrder,
       
        
         }),
@@ -109,7 +114,7 @@ function Orders() {
           <MenuOrders onAddToCart={handleAddToCart} onRemoveToCart={handleRemoveToCart} onAddName={handleClientName} />
         </div>
         <div style={{ width: "50%" }}>
-          <OrderCart cart={cart} clientName={clientName} onNewCart={handleDeleteProduct} sendOrder={handleCreateOrder}/>
+          <OrderCart cart={cart} clientName={clientName} onNewCart={handleDeleteProduct} sendOrder={handleCreateOrder} />
         </div>
       </div>
     </>

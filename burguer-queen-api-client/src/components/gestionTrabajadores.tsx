@@ -181,7 +181,8 @@ const [newUser, setNewUser] = useState({
     background: '#EB7433',
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.3)',
   }}>
     <img src={returnBack} alt="return" />
   </div>
@@ -193,6 +194,7 @@ const [newUser, setNewUser] = useState({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.3)',
   }}>
     <img src={addNewProduct} alt="add" />
     <strong>Agregar</strong>
@@ -206,11 +208,11 @@ const [newUser, setNewUser] = useState({
                   <p><strong>Contraseña:</strong> {user.password ? '*'.repeat(user.password.length) : 'No password set'}</p>
                   <p><strong>Rol:</strong> {user.role}</p>
                   <section style={{width:'100%', display:'flex', flexDirection:'row', justifyContent:'center'}}>
-                  <div onClick={() => handleEditUser(user.id)} style={{ width: '40px', height:'40px', borderRadius:'50%', marginRight:'10px',background:'#EB7433', display:'flex', alignItems:'center', justifyContent:'center' }}>
-                <img src={editIconSvg} alt="edit" />
+                  <div onClick={() => handleEditUser(user.id)} style={{boxShadow: '0 2px 4px rgba(0, 0, 0, 0.5)', width: '50px', height:'50px', borderRadius:'50%', margin:'10px',background:'#EB7433', display:'flex', alignItems:'center', justifyContent:'center' }}>
+                <img src={editIconSvg} alt="edit" style={{ width: '25px', height: '25px' }}/>
               </div>
-                  <div onClick={() => handleDeleteUser(user.id)} style={{ width: '40px', height:'40px', borderRadius:'50%', marginRight:'10px',background:'#EB7433', display:'flex', alignItems:'center', justifyContent:'center' }}>
-                <img src={deleteIconSvg} alt="delete" />
+                  <div onClick={() => handleDeleteUser(user.id)} style={{ boxShadow: '0 2px 4px rgba(0, 0, 0, 0.5)', width: '50px', height:'50px', borderRadius:'50%', margin:'10px',background:'#EB7433', display:'flex', alignItems:'center', justifyContent:'center' }}>
+                <img src={deleteIconSvg} alt="delete" style={{ width: '25px', height: '25px' }} />
               </div>
               </section>
                 </div>
