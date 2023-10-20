@@ -1,86 +1,48 @@
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import { useNavigate } from 'react-router-dom';
+import returnBack from '../assets/arrow_back_FILL0_wght400_GRAD0_opsz24.svg';
+import gestionGo from '../assets/arrow_forward_FILL0_wght400_GRAD0_opsz24.svg';
 
 function MeseroNav() {
   const containerStyle = {
     backgroundColor: '#FFAA6C',
     minHeight: '5vh',
     display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'flex-start',
+    flexDirection: 'column',
+    alignItems: 'center',
     justifyContent: 'center',
   };
 
   const navigate = useNavigate();
-
-  const [activeButton, setActiveButton] = useState(null);
 
   const handleGestionMesero = () => {
     navigate("/gestionMesero");
     setActiveButton("gestionMesero");
   };
 
-  const handleNewOrder = () => {
-    navigate("/orders");
-    setActiveButton("newOrder");
-  };
+
 
   return (
     <div style={containerStyle}>
       <div className="d-grid gap-4 "></div>
-      <Button
-        size="lg"
-        style={{
-          width: '40%',
-          height: '80%',
-          margin: '10px',
-          borderRadius: '10px',
-          color: 'black',
-          background: activeButton === "newOrder" ? '#EF5F10' : '#EB7433',
-          borderColor: '#EB7433',
-          transition: 'background 0.3s, color 0.3s',
-        }}
-        onMouseEnter={(e) => {
-          e.target.style.background = activeButton === "newOrder" ? '#EF5F10' : '#EB7433';
-          e.target.style.color = 'white';
-        }}
-        onMouseLeave={(e) => {
-          if (activeButton !== "newOrder") {
-            e.target.style.background = '#EB7433';
-            e.target.style.color = 'initial';
-          }
-        }}
-        onClick={handleNewOrder}
-      >
-        Nueva Orden
-      </Button>
-      <Button
-        size="lg"
-        style={{
-          width: '40%',
-          height: '80%',
-          margin: '10px',
-          borderRadius: '10px',
-          color: 'black',
-          background: activeButton === "gestionMesero" ? '#EF5F10' : '#EB7433',
-          borderColor: '#EB7433',
-          transition: 'background 0.3s, color 0.3s',
-        }}
-        onMouseEnter={(e) => {
-          e.target.style.background = activeButton === "gestionMesero" ? '#EF5F10' : '#EB7433';
-          e.target.style.color = 'white';
-        }}
-        onMouseLeave={(e) => {
-          if (activeButton !== "gestionMesero") {
-            e.target.style.background = '#EB7433';
-            e.target.style.color = 'initial';
-          }
-        }}
-        onClick={handleGestionMesero}
-      >
-        Gestión de Pedidos
-      </Button>
+      <h2 style={{ display:'flex', borderBottom: '2px solid black', marginTop:'15px' }}>NUEVA ORDEN</h2>
+       <section style={{ width: '95%', display: 'flex', flexDirection: 'row', justifyContent: 'flex-end' }}>
+  <div onClick={handleGestionMesero} style={{
+   width: '140px',
+   height: '40px',
+    borderRadius: '10px',
+    marginRight: '10px',
+    background: '#EB7433',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    cursor:'pointer',
+    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.3)',
+  }}>
+    <strong>Pedidos</strong><img src={gestionGo} alt="gestionGo" />
+  </div>
+</section>
     </div>
   );
 }
