@@ -4,11 +4,12 @@
 
 * [1. Preámbulo](#1-preámbulo)
 * [2. Resumen del proyecto](#2-resumen-del-proyecto)
-* [3. Objetivos de aprendizaje](#3-objetivos-de-aprendizaje)
-* [4. Consideraciones](#4-consideraciones)
-* [5. Criterios de aceptación del proyecto](#5-criterios-de-aceptación-del-proyecto)
-* [6. Despliegue](#6-despliegue)
-* [7. Pistas 7/ tips](#7-pistas--tips)
+* [3. Bienvenidos a BurgerQueen](#3-bienvenidos-a-burgerqueen)
+* [4. Objetivos de aprendizaje](#4-objetivos-de-aprendizaje)
+* [5. Consideraciones](#5-consideraciones)
+* [6. Criterios de aceptación del proyecto](#6-criterios-de-aceptación-del-proyecto)
+* [7. Despliegue](#7-despliegue)
+* [8. Pistas 7/ tips](#8-pistas--tips)
 
 ***
 
@@ -104,8 +105,23 @@ y el estado sincronizados**. Así que esta experiencia espera familiarizarte con
 el concepto de _estado de pantalla_, y como cada cambio sobre el estado se va
 a ir reflejando en la interfaz (por ejemplo, cada vez que agregamos un _producto_
 a un _pedido_, la interfaz debe actualizar la lista del pedido y el total).
+## 3. Bienvenidos a BurgerQueen
 
-## 3. Objetivos de aprendizaje
+![login](burguer-queen-api-client\src\images\login.PNG)
+![home](burguer-queen-api-client\src\images\home.PNG)
+![mesero](burguer-queen-api-client\src\images\nuevaorden.PNG)
+![pedidos](burguer-queen-api-client\src\images\gestionPedido.PNG)
+![cocina](burguer-queen-api-client\src\images\cocina.PNG)
+![admin](burguer-queen-api-client\src\images\homeAdmin.PNG)
+![productos](burguer-queen-api-client\src\images\productosG.PNG)
+![agregarProducto](burguer-queen-api-client\src\images\agregarProducto.PNG)
+![editarProducto](burguer-queen-api-client\src\images\editProducto.PNG)
+![eliminarProducto](burguer-queen-api-client\src\images\eliminarProducto.PNG)
+![adminTrabajadores](burguer-queen-api-client\src\images\trabajadores.PNG)
+![]()
+![]()
+
+## 4. Objetivos de aprendizaje
 
 
 Reflexiona y luego marca los objetivos que has llegado a entender y aplicar en tu proyecto. Piensa en eso al decidir tu estrategia de trabajo.
@@ -641,7 +657,7 @@ Reflexiona y luego marca los objetivos que has llegado a entender y aplicar en t
   * [Pruebas con Usuarios 1 — ¿Qué, cuándo y para qué testeamos?](https://eugeniacasabona.medium.com/pruebas-con-usuarios-1-qu%C3%A9-cu%C3%A1ndo-y-para-qu%C3%A9-testeamos-7c3a89b4b5e7)
 </p></details>
 
-## 4. Consideraciones
+## 5. Consideraciones
 
 Este proyecto se debe "resolver" en duplas y para trabajar con el backend
 te sugerimos elegir un metodo entre las siguientes opciones:
@@ -704,7 +720,7 @@ Por otro lado, deberás definir la estructura de carpetas y archivos que conside
 necesaria. Puedes guiarte de las convenciones del _framework_ elegido. Por ende,
 los _tests_ y el _setup_ necesario para ejecutarlos, serán hechos por ti.
 
-## 5. Criterios de aceptación del proyecto
+## 6. Criterios de aceptación del proyecto
 
 ### Definición del producto
 
@@ -852,7 +868,7 @@ para mantener actualizado el menú.
 
 ***
 
-## 6. Despliegue
+## 7. Despliegue
 
 Puedes elegir el proveedor (o proveedores) que prefieras junto
 con el mecanismo de despligue y estrategia de alojamiento.
@@ -868,7 +884,7 @@ plataforma de _despliegue_ que nos permite desplegar nuestra aplicación
 web estática (HTML, CSS y JavaScript) y también nos permite desplegar
 aplicaciones web que se ejecutan en el servidor (Node.js).
 
-## 7. Pistas / Tips
+## 8. Pistas / Tips
 
 Súmate al canal de Slack
 [#project-bq-api-client](https://claseslaboratoria.slack.com/archives/C04A0GS1WJX)
