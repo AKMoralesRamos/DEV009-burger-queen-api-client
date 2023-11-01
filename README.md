@@ -108,17 +108,16 @@ a un _pedido_, la interfaz debe actualizar la lista del pedido y el total).
 ## 3. Bienvenidos a BurgerQueen
 
 ![login](login.PNG)
-![home](burguer-queen-api-client\src\images\home.PNG)
-![mesero](burguer-queen-api-client\src\images\nuevaorden.PNG)
-![pedidos](burguer-queen-api-client\src\images\gestionPedido.PNG)
-![cocina](burguer-queen-api-client\src\images\cocina.PNG)
-![admin](burguer-queen-api-client\src\images\homeAdmin.PNG)
-![productos](burguer-queen-api-client\src\images\productosG.PNG)
-![agregarProducto](burguer-queen-api-client\src\images\agregarProducto.PNG)
-![editarProducto](burguer-queen-api-client\src\images\editProducto.PNG)
-![eliminarProducto](burguer-queen-api-client\src\images\eliminarProducto.PNG)
-![adminTrabajadores](burguer-queen-api-client\src\images\trabajadores.PNG)
-![]()
+![home](home.PNG)
+![mesero](nuevaorden.PNG)
+![pedidos](gestionPedido.PNG)
+![cocina](cocina.PNG)
+![admin](homeAdmin.PNG)
+![productos](productosG.PNG)
+![agregarProducto](agregarProducto.PNG)
+![editarProducto](editProducto.PNG)
+![eliminarProducto](eliminarProducto.PNG)
+![adminTrabajadores](trabajadores.PNG)
 ![]()
 
 ## 4. Objetivos de aprendizaje
