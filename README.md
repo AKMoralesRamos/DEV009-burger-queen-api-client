@@ -107,7 +107,7 @@ a ir reflejando en la interfaz (por ejemplo, cada vez que agregamos un _producto
 a un _pedido_, la interfaz debe actualizar la lista del pedido y el total).
 ## 3. Bienvenidos a BurgerQueen
 
-![login](burguer-queen-api-client\src\images\login.PNG)
+![login](login.PNG)
 ![home](burguer-queen-api-client\src\images\home.PNG)
 ![mesero](burguer-queen-api-client\src\images\nuevaorden.PNG)
 ![pedidos](burguer-queen-api-client\src\images\gestionPedido.PNG)
