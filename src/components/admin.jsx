@@ -3,8 +3,8 @@ import Header from './header';
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import { useNavigate } from 'react-router-dom';
-import productsImage from '../images/productoss.jpg';
-import workersImage from '../images/workers.jpg';
+import productsImage from '../assets/productoss.jpg';
+import workersImage from '../assets/workers.jpg';
 
 function Admin() {
   const containerStyle = {

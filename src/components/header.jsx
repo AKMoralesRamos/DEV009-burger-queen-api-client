@@ -1,6 +1,6 @@
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
-import logo from '../images/burger-queen-logo.png';
+import logo from '../assets/burger-queen-logo.png';
 import { useNavigate } from 'react-router-dom';
 import logOutIcon from '../assets/logout_FILL0_wght400_GRAD0_opsz24.svg';
 import homeIcon from '../assets/home_FILL0_wght400_GRAD0_opsz24.svg';

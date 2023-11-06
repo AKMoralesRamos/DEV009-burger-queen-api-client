@@ -1,6 +1,6 @@
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
-import logo from '../images/burger-queen-logo.png';
+import logo from '../assets/burger-queen-logo.png';
 
 function HeaderLogin() {
     

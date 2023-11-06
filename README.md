@@ -111,6 +111,7 @@ a un _pedido_, la interfaz debe actualizar la lista del pedido y el total).
 ![home](public\home.PNG)
 ![mesero](public\nuevaorden.PNG)
 ![pedidos](public\gestionPedido.PNG)
+![eliminarPedidos](public\gestionEliminar.PNG)
 ![cocina](public\cocina.PNG)
 ![admin](public\homeAdmin.PNG)
 ![productos](public\productosG.PNG)
