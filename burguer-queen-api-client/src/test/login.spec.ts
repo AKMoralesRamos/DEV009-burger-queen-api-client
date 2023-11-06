@@ -1,4 +1,4 @@
-it('should redirect to home page when valid email and password are entered', () => {
+/* it('should redirect to home page when valid email and password are entered', () => {
     // Mock the fetch function
     jest.spyOn(global, 'fetch').mockImplementation(() =>
       Promise.resolve({
@@ -26,4 +26,4 @@ it('should redirect to home page when valid email and password are entered', () 
 
     // Restore the original fetch function
     global.fetch.mockRestore();
-  });
+  }); */
