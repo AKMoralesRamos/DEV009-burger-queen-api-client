@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import hamburger from '../images/destacda-hamburguesa-recortada.jpg'
+import hamburger from '../assets/destacda-hamburguesa-recortada.jpg'
 import HeaderLogin from './headerLogin';
 function FormLogin() {
  const navigate = useNavigate();
