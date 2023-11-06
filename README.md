@@ -107,17 +107,17 @@ a ir reflejando en la interfaz (por ejemplo, cada vez que agregamos un _producto
 a un _pedido_, la interfaz debe actualizar la lista del pedido y el total).
 ## 3. Bienvenidos a BurgerQueen
 
-![login](login.PNG)
-![home](home.PNG)
-![mesero](nuevaorden.PNG)
-![pedidos](gestionPedido.PNG)
-![cocina](cocina.PNG)
-![admin](homeAdmin.PNG)
-![productos](productosG.PNG)
-![agregarProducto](agregarProducto.PNG)
-![editarProducto](editProducto.PNG)
-![eliminarProducto](eliminarProducto.PNG)
-![adminTrabajadores](trabajadores.PNG)
+![login](public\login.PNG)
+![home](public\home.PNG)
+![mesero](public\nuevaorden.PNG)
+![pedidos](public\gestionPedido.PNG)
+![cocina](public\cocina.PNG)
+![admin](public\homeAdmin.PNG)
+![productos](public\productosG.PNG)
+![agregarProducto](public\agregarProducto.PNG)
+![editarProducto](public\editProducto.PNG)
+![eliminarProducto](public\eliminarProducto.PNG)
+![adminTrabajadores](public\trabajadores.PNG)
 ![]()
 
 ## 4. Objetivos de aprendizaje
